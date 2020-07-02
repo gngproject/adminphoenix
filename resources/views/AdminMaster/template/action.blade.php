@@ -1,0 +1,1 @@
+<a href="{{ route('adminmaster.productmaster.view', $model) }}" class="btn btn-sm btn-block btn-success">View</a>
