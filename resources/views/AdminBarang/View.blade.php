@@ -90,16 +90,22 @@
               </div>
             </div>
             <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-              <h3 class="text-primary"><i class="fa fa-paint-brush"></i> Description</h3>
-                <p class="text-muted">{{$views->description}}
-                </p>
+              <h3 class="text-primary"><i class="fa fa-paint-brush"></i> Details</h3>
+               
               <br>
               <div class="text-muted">
-                <p class="text-sm">Type
+                <p>
+                  <p class="text-sm">Gold Type
+                    <b class="d-block">
+                     {{$views->emas_karat}}
+                    </b>
+                  </p>
+                </p>
+                <p class="text-sm">Category
                   <b class="d-block">
                     @if($views->Product_type == '0')
                       {{ $views->Product_type = 'Diamond Ring' }}
-                    @elseif($views->Product_type == '1')
+                    @elseif($view->Product_type == '1')
                       {{ $views->Product_type = 'Wedding Ring'}}
                     @elseif($views->Product_type == '2')
                       {{ $views->Product_type = 'GIA'}}
@@ -110,6 +116,36 @@
                     @elseif($views->Product_type == '5')
                       {{ $views->Product_type = 'Cincin'}}
                     @endif
+                  </b>
+                </p>
+                <p class="text-sm">Diamond
+                  <b class="d-block">
+                    @if($views->berlian_karat1 != 0.0000)
+                      {{ $views->berlian_karat1}} Carats x {{ $views->quantity_berlian1}}
+                    @endif
+                    
+                    @if($views->berlian_karat2 != 0.0000)
+                    <br>
+                    {{ $views->berlian_karat2}} Carats x {{ $views->quantity_berlian2}}
+                    @endif
+                    @if($views->berlian_karat3 != 0.0000)
+                    <br>
+                    {{ $views->berlian_karat3}} Carats x {{ $views->quantity_berlian3}}
+                    @endif
+                    @if($views->berlian_karat4 != 0.0000)
+                    <br>
+                    {{ $views->berlian_karat4}} Carats x {{ $views->quantity_berlian4}}
+                    @endif
+                   
+                  </b>
+                </p>
+                <p class="text-sm">Color & Clarity
+                  <b class="d-block">
+                    @foreach ($gettype as $item)
+                        
+                    {{$item->colour}} & {{$item->clarity}} 
+                    @endforeach
+                   
                   </b>
                 </p>
                 <p class="text-sm">Gender

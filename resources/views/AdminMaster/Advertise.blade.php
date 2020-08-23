@@ -19,6 +19,7 @@
     </div>
   </div>
 </section>
+
 <div class="row">
   <div class="col-md-12">
     <nav class="navbar navbar-expand navbar-light">
@@ -45,6 +46,11 @@
           </div>
           <div class="card-body">
             <table id="dataTables" class="table table-bordered table-striped text-center">
+              <div class="row mb-2 ">
+                <div class="col-2">
+                  <button type="button" onclick="location.href='{{ route('adminmaster.advertise.form') }}'" class="btn btn-sm btn-block btn-primary">Tambah Advertise</button>
+                </div>
+              </div>
               <thead>
               <tr>
                 <th>ID Advertise</th>
@@ -62,7 +68,7 @@
         </div>
       </div>
     </div>
-    @push('scriptsadminadvertise')
+    @push('scriptsadminnonactiveadvert')
     <script type="text/javascript">
       $(function() {
         $('#dataTables').DataTable({

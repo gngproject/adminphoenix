@@ -20,8 +20,11 @@
           <tr>
             <th>ID Product</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Quantity</th>
+            <th>Weight (gram)</th>
+            <th>Emas Yang Dipasang</th>
+            <th>Berlian Yang Dipasang (Carats)</th>
+            <th>Quantity Berlian (Pcs)</th>
             <th>Image 1</th>
             <th>Image 2</th>
             <th>Created</th>
@@ -46,8 +49,11 @@
         columns: [
           { data:"productID_view" },
           { data:"Product_Name"},
-          { data:'description'},
           { data:'quantity'},
+          { data:"weight"},
+          { data:'emas_karat'},
+          { data:'berlian_karat1' },
+          { data:'quantity_berlian1'},
           { data:'Product_img_1'},
           { data:'Product_img_2'},
           { data:'created_at'},

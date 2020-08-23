@@ -1,4 +1,5 @@
 <?php
+
 use RealRashid\SweetAlert\Facades\Alert;
 
 Route::get('/', 'HomeController@index')->name('dashboard');
@@ -9,7 +10,7 @@ Route::get('/ProductShow', 'ProductController@index')->name('productmaster.show'
 
 Route::get('/product/data', 'ProductController@productDataMaster')->name('productmaster.data');
 
-Route::get('/product/status/{status}','ProductController@status')->name('productmaster.status');
+Route::get('/product/status/{status}', 'ProductController@status')->name('productmaster.status');
 
 Route::get('/delete/{productID}', 'ProductController@Delete');
 
@@ -21,7 +22,7 @@ Route::get('/delete/{productID}', 'ProductController@Delete');
 //     return view('Product.EditProduct', $id_product)->render();
 // });
 
-Route::get('/product/view/{view}','ProductController@view')->name('productmaster.view');
+Route::get('/product/view/{view}', 'ProductController@view')->name('productmaster.view');
 
 //---------- Users Controller Admin Master ----------//
 Route::get('/UserShow', 'UserController@index')->name('users.show');
@@ -35,7 +36,7 @@ Route::get('/VoucherShow', 'VoucherController@index')->name('voucher.show');
 
 Route::get('/Voucher/data', 'VoucherController@VoucherDataMaster')->name('voucher.data');
 
-Route::get('/Voucher/status/{status}','VoucherController@status')->name('voucher.status');
+Route::get('/Voucher/status/{status}', 'VoucherController@status')->name('voucher.status');
 
 Route::get('/VoucherShowNonActive', 'VoucherController@IndexNonActive')->name('voucher.shownonactive');
 
@@ -43,7 +44,7 @@ Route::get('/VoucherNonActive', 'VoucherController@NonActiveVoucherMaster')->nam
 
 Route::post('/VoucherAdd', 'VoucherController@VoucherAdd')->name('voucher_add');
 
-Route::get('/VoucherAddView',function(){
+Route::get('/VoucherAddView', function () {
     return view("AdminMaster.VoucherAdd");
 });
 
@@ -51,11 +52,11 @@ Route::get('/deletevcr/{voucherID}', 'VoucherController@VcrDelete')->name('vouch
 
 Route::get('/restore/{voucherID}', 'VoucherController@RestoreVoucher')->name('voucher.restore');
 
-Route::get('/deletepermanent/{voucherID}','VoucherController@DeletePermanent')->name('voucher.deletepermanent');
+Route::get('/deletepermanent/{voucherID}', 'VoucherController@DeletePermanent')->name('voucher.deletepermanent');
 
-Route::get('/voucher/{voucherID}/edit','VoucherController@EditVoucher')->name('voucher.edit');
+Route::get('/voucher/{voucherID}/edit', 'VoucherController@EditVoucher')->name('voucher.edit');
 
-Route::post('/voucher/{voucherID}/update','VoucherController@UpdateVoucher')->name('voucher.update');
+Route::post('/voucher/{voucherID}/update', 'VoucherController@UpdateVoucher')->name('voucher.update');
 
 
 
@@ -65,25 +66,27 @@ Route::get('/AdvertShow', 'AdvertiseController@index')->name('advertise.show');
 Route::get('/Advertisment/data', 'AdvertiseController@AdvertMaster')->name('advertise.showdata');
 
 // Route::post('/AdvertiseAdd', 'AdvertiseController@AdvertiseAdd')->name('Advertise_add');
-Route::get('/AdvertiseAddView',function(){
+Route::get('/AdvertiseAddView', function () {
     return view("AdminMaster.AdvertiseAdd");
-});
+})->name('advertise.form');
 
 Route::get('/AdvertiseShowNonActive', 'AdvertiseController@ShowNonActive')->name('advertise.shownonactive');
 
 Route::get('/AdvertiseNonActive', 'AdvertiseController@NonActiveAdvertiseMaster')->name('advertise.nonactive');
 
-Route::get('/Delete/Ads/{advertiseID}','AdvertiseController@AdsDeleteSoft')->name('advertise.softdelete');
+Route::post('/Advertise/save', 'AdvertiseController@store')->name('advertise.add');
+
+Route::get('/Delete/Ads/{advertiseID}', 'AdvertiseController@AdsDeleteSoft')->name('advertise.softdelete');
 
 Route::get('/restore/Adv/{advertiseID}', 'AdvertiseController@RestoreAdvertise')->name('advertise.restore');
 
 Route::post('/Advertisment/{advertiseID}/update', 'AdvertiseController@UpdateAdvertise')->name('advertise.update');
 
-Route::get('/advertisment/{advertiseID}/edit','AdvertiseController@EdtAdvertise')->name('advertise.edit');
+Route::get('/advertisment/{advertiseID}/edit', 'AdvertiseController@EdtAdvertise')->name('advertise.edit');
 
-Route::get('/adv/deletepermanent/{advertiseID}','AdvertiseController@PermanentAdv')->name('advertise.deletepermanent');
+Route::get('/adv/deletepermanent/{advertiseID}', 'AdvertiseController@PermanentAdv')->name('advertise.deletepermanent');
 
-Route::get('/Advertisment/status/{status}','AdvertiseController@status')->name('advertise.status');
+Route::get('/Advertisment/status/{status}', 'AdvertiseController@status')->name('advertise.status');
 
 
 
@@ -96,6 +99,6 @@ Route::get('/Sell/{id}/detail', 'PenjualanController@detail')->name('penjualan.d
 
 Route::get('/Selltrash', 'PenjualanController@trash')->name('penjualan.trash');
 
-Route::get('/Delete/sell/{id}','PenjualanController@TransDeleteSoft')->name('penjualan.soft');
+Route::get('/Delete/sell/{id}', 'PenjualanController@TransDeleteSoft')->name('penjualan.soft');
 
 Route::get('/restore/sell/{id}', 'PenjualanController@RestoreSell')->name('penjualan.restore');

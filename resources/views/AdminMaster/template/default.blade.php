@@ -219,7 +219,7 @@
 
 @stack('scriptsadminnonactivevoucher')
 
-@stack('scriptsadminadvertise')
+@stack('scriptsadminadvertiseadvert')
 
 @stack('scriptsadminnonactiveadvert')
 

@@ -24,8 +24,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <form method="POST" action="{{ route('advertise.add') }}">
-        {{csrf_field()}}
+      <form method="POST" action="{{ route('advertise.add') }}" enctype="multipart/form-data">
+        @csrf
       <div class="card-body">
         <div class="form-group">
             <label for="advertiseID_view">Advertise ID</label>

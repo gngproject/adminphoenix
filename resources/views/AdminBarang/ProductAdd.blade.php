@@ -66,6 +66,13 @@
             @endif
           </div>
           <div class="form-group">
+            <label for="Weight">Weight</label>
+            <input type="text" class="form-control" id="weight" name="weight">
+            @if ($errors->has('weight'))
+              <span class="text-danger">{{ $errors->first('weight') }}</span>
+            @endif
+          </div>
+          <div class="form-group">
             <label>Product Type</label>
             <select class="form-control" id="Product_type" name="Product_type">
               <option></option>
@@ -78,11 +85,42 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Description</label>
-              <textarea class="form-control" id="description" name="description" rows="2" placeholder="Enter ..."></textarea>
-            @if ($errors->has('description'))
-              <span class="text-danger">{{ $errors->first('description') }}</span>
+            <label>Emas Yang Dipasang</label>
+              <textarea class="form-control" id="emas_karat" name="emas_karat" rows="2" placeholder="Cincin berlian dengan 18 karat..."></textarea>
+            @if ($errors->has('emas_karat'))
+              <span class="text-danger">{{ $errors->first('emas_karat') }}</span>
             @endif
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="berlian">Berlian Yang Dipasang</label>
+              <input type="number" class="form-control" id="berlian_karat1" name="berlian_karat1" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
+              <input type="number" class="form-control" id="berlian_karat2" name="berlian_karat2" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
+              <input type="number" class="form-control" id="berlian_karat3" name="berlian_karat3" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
+              <input type="number" class="form-control" id="berlian_karat4" name="berlian_karat4" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
+           
+              @if ($errors->has('berlian_karat1'))
+                <span class="text-danger">{{ $errors->first('berlian_karat1') }}</span>
+              @endif
+            </div>
+            <div class="col">
+              <label for="berlian">Quantity Berlian</label>
+              <input type="number" class="form-control" id="quantity_berlian1" name="quantity_berlian1" placeholder="0" step="1" min="0" required> <br>
+              <input type="number" class="form-control" id="quantity_berlian2" name="quantity_berlian2" placeholder="0" step="1" min="0"> <br>
+              <input type="number" class="form-control" id="quantity_berlian3" name="quantity_berlian3" placeholder="0" step="1" min="0"> <br>
+              <input type="number" class="form-control" id="quantity_berlian4" name="quantity_berlian4" placeholder="0" step="1" min="0"> <br>
+           
+              @if ($errors->has('quantity_berlian1'))
+                <span class="text-danger">{{ $errors->first('quantity_berlian1') }}</span>
+              @endif
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Colour & Clarity</label>
+            <select class="form-control" id="colour" name="colour">
+              <option></option>
+              <option value="1">F & VVS</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="Product_img_1">Product Image 1</label>
