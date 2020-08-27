@@ -117,31 +117,57 @@ class AdvertiseController extends Controller
 
      public function EdtAdvertise($id_ads)
      {
-          $response      = $this->_client->request('GET', "advertisment/{$id_ads}");
-          $result        = json_decode($response->getBody()->getContents());
-          $data          = ['response' => $result];
+          $data = \DB::table('advertise')->where('advertiseID', $id_ads)->first();
+          // $response      = $this->_client->request('GET', "advertisment/{$id_ads}");
+          // $result        = json_decode($response->getBody()->getContents());
+          // $data          = ['response' => $result];
           return View::make('AdminMaster.EAdvertise', compact('data'));
           // return view("AdminMaster.EAdvertise", $data);
           // var_dump($data);
      }
 
+     public function update_photo_advertise($advertise_img, $db_path, $folder)
+     {
+          if ($db_path != null) {
+               $willdelete = str_replace("storage", "public", $db_path);
+               Storage::delete($willdelete);
+          }
+          
+          $New_path = str_replace("public", "storage", $advertise_img->store('public/' . $folder));
+          return $New_path;
+     }
+
+
      public function AdvertiseUpdate(Request $request, $id_ads)
      {
-          $response = $this->_client->request("POST", '/advertise/update/{$id_ads}', [
+          $getData = advertisment::all()->where('advertiseID', '=', $id_ads)->first();
+          $advertiseID_view              = $request->input("advertiseID_view");
+          $advertise_name                = $request->input("advertise_name");
+          $advertise_description         = $request->input("advertise_description");
+          $advertise_img                 = $request->file('advertise_img');
+          
+          $path_advertise = $this->update_photo_advertise($advertise_img , $getData->advertise_img , 'advertiseimg');
+          $advertise = advertisment::find($id_ads);
+          $advertise->advertiseID_view = $advertiseID_view;
+          $advertise->advertise_name = $advertise_name;
+          $advertise->advertise_description = $advertise_description;
+          $advertise->advertise_img = $path_advertise;
 
-               'json' => [
-                    'advertiseID'                => $request->get("advertiseID"),
-                    'advertiseID_view'           => $request->get("advertiseID_view"),
-                    'advertise_name'             => $request->get("advertise_name"),
-                    'advertise_description'      => $request->get("advertise_description"),
-               ]
+          $advertise->save();
+         
 
-          ]);
+          // $response = $this->_client->request("POST", '/advertise/update/{$id_ads}', [
 
-          $result = $response->send();
+          //      'json' => [
+          //           'advertiseID'                => $request->get("advertiseID"),
+          //           'advertiseID_view'           => $request->get("advertiseID_view"),
+          //           'advertise_name'             => $request->get("advertise_name"),
+          //           'advertise_description'      => $request->get("advertise_description"),
+          //      ]
 
-          // return view('Product.ProductAll');
-          dd($result);
+          // ]);
+
+
      }
 
      public function PermanentAdv($id_ads)
@@ -167,5 +193,15 @@ class AdvertiseController extends Controller
                ]);
           }
           return redirect()->route('adminmaster.advertise.shownonactive')->with(['success' => 'status has been changed!']);
+     }
+     
+     public function editAdvertise($advertiseID)
+     {
+          dd($advertiseID);
+          
+          return view('AdminMaster.EAdvertise', [
+               'data' => $advertiseID,
+          ]);
+          // dd($product);
      }
 }

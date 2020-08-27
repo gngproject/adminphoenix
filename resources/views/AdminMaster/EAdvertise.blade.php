@@ -24,13 +24,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <form role="form" method="POST" action="" enctype="multipart/form-data">
+    <form role="form" method="POST" action="{{route('adminmaster.advertise.update', [$data->advertiseID])}}" enctype="multipart/form-data">
       @csrf
-      @method("POST")
+    
       <div class="card-body">
         <div class="form-group">
             <label for="advertiseID_view">Advertise ID</label>
-            <input type="text" class="form-control" id="advertiseID_view" name="advertiseID_view" value="{{$data->advertiseID_view}}">
+            <input type="text" class="form-control" id="advertiseID_view" name="advertiseID_view" value="{{$data->advertiseID_view}}" readonly>
         </div>
         <div class="form-group">
             <label for="advertise_name">Advertise Title</label>
@@ -41,14 +41,19 @@
             <input type="text" class="form-control" id="advertise_description" name="advertise_description" value="{{$data->advertise_description}}">
         </div>
         <div class="form-group">
+          <label for="advertise_img">Advertise Image</label>
+          <input type="file" class="form-control" id="advertise_img" name="advertise_img">
+           
+        </div>
+        {{-- <div class="form-group">
             <label for="advertise_img">Advertise Image</label>
             <div class="input-group">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="advertise_img">
                 <label class="custom-file-label" for="advertise_img">Choose file</label>
+                <input type="file" class="form-control" id="advertise_img" name="advertise_img">
               </div>
             </div>
-        </div>
+        </div> --}}
       </div>
     </div>
     <div class="col-md-12">

@@ -80,9 +80,9 @@ Route::get('/Delete/Ads/{advertiseID}', 'AdvertiseController@AdsDeleteSoft')->na
 
 Route::get('/restore/Adv/{advertiseID}', 'AdvertiseController@RestoreAdvertise')->name('advertise.restore');
 
-Route::post('/Advertisment/{advertiseID}/update', 'AdvertiseController@UpdateAdvertise')->name('advertise.update');
+Route::POST('/Advertisment/update/{advertise_ID}', 'AdvertiseController@AdvertiseUpdate')->name('advertise.update');
 
-Route::get('/advertisment/{advertiseID}/edit', 'AdvertiseController@EdtAdvertise')->name('advertise.edit');
+Route::get('/Advertisment/{advertiseID}/edit', 'AdvertiseController@EdtAdvertise')->name('advertise.edit');
 
 Route::get('/adv/deletepermanent/{advertiseID}', 'AdvertiseController@PermanentAdv')->name('advertise.deletepermanent');
 
