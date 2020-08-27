@@ -154,7 +154,8 @@ class AdvertiseController extends Controller
           $advertise->advertise_img = $path_advertise;
 
           $advertise->save();
-         
+          return redirect()->route('adminmaster.advertise.shownonactive')->with(['success' => 'Your Product Add Has Been Success!']);
+
 
           // $response = $this->_client->request("POST", '/advertise/update/{$id_ads}', [
 
