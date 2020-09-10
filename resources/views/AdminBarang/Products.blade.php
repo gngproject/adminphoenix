@@ -20,7 +20,7 @@
           <tr>
             <th>ID Product</th>
             <th>Name</th>
-            <th>Stock</th>
+            <th>Stocks</th>
             <th>Weight (gram)</th>
             <th>Berlian Yang Dipasang (Carats)</th>
             <th>Image 1</th>

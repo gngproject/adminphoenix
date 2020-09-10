@@ -91,7 +91,7 @@
             </div>
             <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
               <h3 class="text-primary"><i class="fa fa-paint-brush"></i> Details</h3>
-               
+
               <br>
               <div class="text-muted">
                 <p>
@@ -123,7 +123,7 @@
                     @if($views->berlian_karat1 != 0.0000)
                       {{ $views->berlian_karat1}} Carats x {{ $views->quantity_berlian1}}
                     @endif
-                    
+
                     @if($views->berlian_karat2 != 0.0000)
                     <br>
                     {{ $views->berlian_karat2}} Carats x {{ $views->quantity_berlian2}}
@@ -136,16 +136,16 @@
                     <br>
                     {{ $views->berlian_karat4}} Carats x {{ $views->quantity_berlian4}}
                     @endif
-                   
+
                   </b>
                 </p>
                 <p class="text-sm">Color & Clarity
                   <b class="d-block">
                     @foreach ($gettype as $item)
-                        
-                    {{$item->colour}} & {{$item->clarity}} 
+
+                    {{$item->colour}} & {{$item->clarity}}
                     @endforeach
-                   
+
                   </b>
                 </p>
                 <p class="text-sm">Gender

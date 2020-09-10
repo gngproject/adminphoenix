@@ -14,6 +14,10 @@ Route::get('/product/status/{status}', 'ProductController@status')->name('produc
 
 Route::get('/delete/{productID}', 'ProductController@Delete');
 
+Route::get('/product/addform', 'ProductController@FormAddView')->name('productmaster.add');
+
+Route::post('/product/tambah', 'ProductController@store')->name('product.add');
+
 // Route::post('/ProductUpdate', 'ProductController@ProductUpdate');
 
 // Route::get('/DetailProduct/{id_product}','ProductController@DetailProduct')->name('DetailProduct');
@@ -44,9 +48,7 @@ Route::get('/VoucherNonActive', 'VoucherController@NonActiveVoucherMaster')->nam
 
 Route::post('/VoucherAdd', 'VoucherController@VoucherAdd')->name('voucher_add');
 
-Route::get('/VoucherAddView', function () {
-    return view("AdminMaster.VoucherAdd");
-});
+Route::get('/VoucherAddView', 'VoucherController@VoucherAddView')->name('voucher.add');
 
 Route::get('/deletevcr/{voucherID}', 'VoucherController@VcrDelete')->name('voucher.softdelete');
 

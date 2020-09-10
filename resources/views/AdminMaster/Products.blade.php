@@ -26,11 +26,16 @@
       </div>
       <div class="card-body">
         <table id="dataTables" class="table table-bordered table-striped text-center">
+          <div class="row mb-2">
+            <div class="col-2">
+              <button type="button" onclick="location.href='{{ route('adminmaster.productmaster.add') }}'" class="btn btn-sm btn-block btn-primary">Tambah Product</button>
+            </div>
+          </div>
           <thead>
           <tr>
             <th>ID Product</th>
             <th>Name</th>
-            <th>Stock</th>
+            <th>Stocks</th>
             <th>Weight (gram)</th>
             <th>Berlian Yang Dipasang (Carats)</th>
             <th>Image 1</th>
@@ -58,7 +63,7 @@
           { data:"Product_Name"},
           { data:'quantity'},
           { data:"weight"},
-          { data:'quantity_berlian1'},
+          { data:'berlian_karat1' },
           { data:'Product_img_1'},
           { data:'created_at'},
           { data:'updated_at'},
