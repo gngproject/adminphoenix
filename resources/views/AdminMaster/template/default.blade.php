@@ -85,7 +85,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="/Assets/Logo/icon.png"
+      <img src="/Assets/logo/icon.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
@@ -115,6 +115,14 @@
               <i class="nav-icon fa fa-book"></i>
               <p>
                 PRODUCT
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin_master/Sell/show" class="nav-link">
+              <i class="nav-icon fa fa-file"></i>
+              <p>
+                SPECIAL PRODUCT
               </p>
             </a>
           </li>
@@ -151,6 +159,7 @@
               </p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">

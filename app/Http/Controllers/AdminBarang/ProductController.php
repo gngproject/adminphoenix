@@ -45,10 +45,7 @@ class ProductController extends Controller
 
           return datatables()->of($product)
                ->editColumn('Product_img_1', function (product $model) {
-                    return '<img src="http://192.168.1.105:5000/' . $model->Product_img_1 . ' "height="100px" ">';
-               })
-               ->editColumn('Product_img_2', function (product $model) {
-                    return '<img src="http://192.168.1.105:5000/' . $model->Product_img_2 . ' "height="100px" ">';
+                    return '<img src="http://adminphoenixjewellery.com/' . $model->Product_img_1 . ' "height="100px" ">';
                })
                ->addColumn('action', 'AdminBarang.template.action')
                ->addColumn('status', 'AdminBarang.template.label')
