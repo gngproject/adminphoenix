@@ -41,10 +41,13 @@ class AdvertiseController extends Controller
           $advertises = advertisment::where('status', '=', 1)->get();
 
           return datatables()->of($advertises)
+               ->editColumn('advertise_img', function (advertisment $model) {
+                    return '<img src="http://192.168.1.106:5000/' . $model->advertise_img . ' "height="100px" ">';
+               })
                ->addColumn('actionadvertise', 'AdminMaster.template.action_advert')
                ->addColumn('status', 'AdminMaster.template.label')
                ->addIndexColumn()
-               ->rawColumns(['actionadvertise', 'status'])
+               ->rawColumns(['advertise_img','actionadvertise', 'status'])
                ->toJson();
      }
 
@@ -59,7 +62,7 @@ class AdvertiseController extends Controller
 
           return datatables()->of($advertises)
                ->editColumn('advertise_img', function (advertisment $model) {
-                    return '<img src="http://192.168.1.104:5000/' . $model->advertise_img . ' "height="100px" ">';
+                    return '<img src="http://192.168.1.106:5000/' . $model->advertise_img . ' "height="100px" ">';
                })
                ->addColumn('actionadvertise', 'AdminMaster.template.action_advert')
                ->addColumn('status', 'AdminMaster.template.label')
@@ -132,7 +135,7 @@ class AdvertiseController extends Controller
                $willdelete = str_replace("storage", "public", $db_path);
                Storage::delete($willdelete);
           }
-          
+
           $New_path = str_replace("public", "storage", $advertise_img->store('public/' . $folder));
           return $New_path;
      }
@@ -145,7 +148,7 @@ class AdvertiseController extends Controller
           $advertise_name                = $request->input("advertise_name");
           $advertise_description         = $request->input("advertise_description");
           $advertise_img                 = $request->file('advertise_img');
-          
+
           $path_advertise = $this->update_photo_advertise($advertise_img , $getData->advertise_img , 'advertiseimg');
           $advertise = advertisment::find($id_ads);
           $advertise->advertiseID_view = $advertiseID_view;
@@ -195,11 +198,11 @@ class AdvertiseController extends Controller
           }
           return redirect()->route('adminmaster.advertise.shownonactive')->with(['success' => 'status has been changed!']);
      }
-     
+
      public function editAdvertise($advertiseID)
      {
           dd($advertiseID);
-          
+
           return view('AdminMaster.EAdvertise', [
                'data' => $advertiseID,
           ]);

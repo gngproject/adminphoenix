@@ -78,20 +78,37 @@ class VoucherController extends Controller
     //     // dd($response);
     // }
 
-    public function VoucherAdd(Request $req) {
-        $response = $this->_client->request('POST','voucher/add_vouch',
-        [
-            'json' =>[
-                 'voucherID_view'               => $req->get("voucherID_view"),
-                 'voucherCode'                  => $req->get("voucherCode"),
-                 'type'                         => $req->get("type"),
-                 'voucherPercent'               => $req->get("voucherPercent"),
-                 'voucherDiscount'              => $req->get("voucherDiscount"),
-                 'voucherMax_user'              => $req->get("voucherMax_user"),
-            ]
-       ]);
+    public function VoucherAddView()
+    {
+        return view('AdminMaster.VoucherAdd');
+    }
 
-        return redirect("/admin_master/VoucherAddView")->with(['success' => 'Your Voucher Has Been Success !']);
+    public function VoucherAdd(Request $req)
+    {
+        $voucherID_view             = $req->input('voucherID_view');
+        $voucherCode                = $req->input('voucherCode');
+        $type                       = $req->input('type');
+        $voucherPercent             = $req->input('voucherPercent');
+        $voucherDiscount            = $req->input('voucherDiscount');
+        $voucherMax_user            = $req->input('voucherMax_user');
+
+        $vouch_table = new voucher();
+        $vouch_table->voucherID_view               = $voucherID_view;
+        $vouch_table->voucherCode                  = $voucherCode;
+        $vouch_table->type                         = $type;
+        $vouch_table->voucherPercent               = $voucherPercent;
+        $vouch_table->voucherDiscount              = $voucherDiscount;
+        $vouch_table->voucherMax_user              = $voucherMax_user;
+
+        $res=$vouch_table->save();
+
+        if($res==1){
+            return redirect("/admin_master/VoucherAddView")->with(['success' => 'Your Voucher Has Been Success !']);
+        }
+        else{
+            return Response()->json(['message' => 'something wrong'],500);
+        }
+
         // dd($response);
     }
 
@@ -115,30 +132,64 @@ class VoucherController extends Controller
 
     public function EditVoucher($voucherid)
     {
-        $response      = $this->_client->request('GET',"voucher/detail/{$voucherid}");
-        $result        = json_decode($response->getBody()->getContents());
-        $data          = ['response'=> $result];
-        return view("AdminMaster.VoucherEdit", $data);
+        $result=voucher::all()
+        ->where('voucherID','=', $voucherid)
+        ->first();
+
+        if(empty($result)){
+            return response()->json(['message' => 'Voucher Not Found'],204);
+        } else {
+            return view("AdminMaster.VoucherEdit", ['result' => $result]);
+        }
     }
 
     public function UpdateVoucher(Request $request, $voucherid)
     {
-        $response = $this->_client->request("POST","voucherupdate/{$voucherid}",
-        [
-            "form_params" =>[
-                      'voucherID'       => $request->get("voucherID"),
-                      'voucherID_view'  => $request->get("voucherID_view"),
-                      'voucherCode'     => $request->get("voucherCode"),
-                      'type'            => $request->get("type"),
-                      'voucherPercent'  => $request->get("voucherPercent"),
-                      'voucherDiscount' => $request->get("voucherDiscount"),
-                      'voucherMax_user' => $request->get("voucherMax_user"),
-            ],
+        $getData = voucher::all()
+            ->where('voucherID','=', $voucherid)->first();
 
-            ]);
+        $voucherID_view     = $request->input("voucherID_view");
+        $voucherCode        = $request->input("voucherCode");
+        $type               = $request->input("type");
+        $voucherPercent     = $request->input("voucherPercent");
+        $voucherDiscount    = $request->input("voucherDiscount");
+        $voucherMax_user    = $request->input("voucherMax_user");
 
-        $result = $response->getStatusCode();
-        return redirect("/admin_master/VoucherShow")->with(['success' => 'Voucher has been edited successfully !']);
+        $voucher_table = voucher::find($voucherid);
+
+        if ($voucherID_view !=null || $voucherID_view !='')
+        {
+            $voucher_table->voucherID_view = $voucherID_view;
+        }
+        if ($voucherCode !=null || $voucherCode !='')
+        {
+            $voucher_table->voucherCode = $voucherCode;
+        }
+        if($type !=null || $type !='')
+        {
+            $voucher_table->type = $type;
+        }
+        if($voucherPercent !=null || $voucherPercent !='')
+        {
+            $voucher_table->voucherPercent = $voucherPercent;
+        }
+        if($voucherDiscount !=null || $voucherDiscount !='')
+        {
+            $voucher_table->voucherDiscount = $voucherDiscount;
+        }
+        if($voucherMax_user !=null || $voucherMax_user !='')
+        {
+            $voucher_table->voucherMax_user = $voucherMax_user;
+        }
+
+        $result = $voucher_table->save();
+
+        if($result == 1){
+            return redirect("/admin_master/VoucherShow")->with(['success' => 'Voucher has been edited successfully !']);
+        } else {
+            return Response()->json(['message' => 'Error Json'],500);
+        }
+
     }
 
     public function status($id_voucher)

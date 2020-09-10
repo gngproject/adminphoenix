@@ -23,41 +23,41 @@
 <div class="container-fluid">
   <div class="row">
       <div class="col-md-12">
-        <form role="form" method="POST" action="{{ route ('adminmaster.voucher.update', $response->voucherID) }}" enctype="multipart/form-data">
+        <form role="form" method="POST" action="{{ route ('adminmaster.voucher.update', $result->voucherID) }}" enctype="multipart/form-data">
             @csrf
             @method("POST")
             <div class="card-body">
               <div class="form-group">
-                <input type="hidden" class="form-control" id="voucherID" name="voucherID" value="{{ $response->voucherID }}" required>
+                <input type="hidden" class="form-control" id="voucherID" name="voucherID" value="{{ $result->voucherID }}" required>
               </div>
               <div class="form-group">
                   <label for="voucherID_view">ID Voucher</label>
-                  <input type="text" class="form-control" id="voucherID_view" name="voucherID_view" value="{{ $response->voucherID_view }}" readonly>
+                  <input type="text" class="form-control" id="voucherID_view" name="voucherID_view" value="{{ $result->voucherID_view }}" readonly>
               </div>
               <div class="form-group">
                 <label for="Price">Code Voucher</label>
-                <input type="text" class="form-control" id="voucherCode" name="voucherCode" value="{{ $response->voucherCode }}" required>
+                <input type="text" class="form-control" id="voucherCode" name="voucherCode" value="{{ $result->voucherCode }}" required>
               </div>
               <div class="form-group">
                 <label>Type Voucher</label>
-                <input type="text" class="form-control" id="type" name="type" value="{{ $response->type }}" required>
+                <input type="text" class="form-control" id="type" name="type" value="{{ $result->type }}" required>
               </div>
               <div class="form-group">
                 <label>Voucher with Percent</label>
                 <div class="input-group-append">
-                  <input type="text" class="form-control" id="voucherPercent" name="voucherPercent" value="{{ $response->voucherPercent }}">
+                  <input type="text" class="form-control" id="voucherPercent" name="voucherPercent" value="{{ $result->voucherPercent }}">
                   <span class="input-group-text">%</span>
                 </div>
               </div>
               <div class="form-group">
                 <label>Voucher With Nominal</label>
                   <div class="input-group-append">
-                    <input type="text" class="form-control" id="voucherDiscount" name="voucherDiscount" value="{{ $response->voucherDiscount }}">
+                    <input type="text" class="form-control" id="voucherDiscount" name="voucherDiscount" value="{{ $result->voucherDiscount }}">
                   </div>
               </div>
               <div class="form-group">
                 <label>Voucher Max in User</label>
-                <input type="text" class="form-control" id="voucherMax_user" name="voucherMax_user" value="{{ $response->voucherMax_user }}">
+                <input type="text" class="form-control" id="voucherMax_user" name="voucherMax_user" value="{{ $result->voucherMax_user }}">
               </div>
             </div>
             <div class="col-md-12">
