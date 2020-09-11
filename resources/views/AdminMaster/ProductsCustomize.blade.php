@@ -1,6 +1,6 @@
 @extends('AdminMaster.template.default')
 
-@section('title', 'Data Product Special')
+@section('title', 'Data Customize Product')
 
 @section('content')
 <section class="content-header">
@@ -12,7 +12,7 @@
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="/admin_master">Home</a></li>
-          <li class="breadcrumb-item active">Data Special Product</li>
+          <li class="breadcrumb-item active">Data Customize Product</li>
         </ol>
       </div>
     </div>
@@ -22,7 +22,7 @@
   <div class="col-12">
     <div class="card mt-2">
       <div class="card-header">
-        <h3 class="card-title">Data Special Product</h3>
+        <h3 class="card-title">Data Customize Product</h3>
       </div>
       <div class="card-body">
         <table id="dataTables" class="table table-bordered table-striped text-center">
@@ -47,13 +47,13 @@
   </div>
 </div>
 
-@push('scriptsadminmasterspecial')
+@push('scriptsadminmastercustomize')
   <script type="text/javascript">
     $(function() {
       $('#dataTables').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{ route('adminmaster.productmaster.specialdata') }}',
+        ajax: '{{ route('adminmaster.productmaster.customizedata') }}',
         columns: [
           { data:"id" },
           { data:"nama"},

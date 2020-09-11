@@ -201,12 +201,12 @@ class ProductController extends Controller
           return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'status has been changed!']);
      }
 
-     public function specialview()
+     public function customizeview()
      {
-          return view('AdminMaster.ProductsSpecial');
+          return view('AdminMaster.ProductsCustomize');
      }
 
-     public function productDataSpecial()
+     public function productDataCustomize()
      {
           $special_product = special_product::orderBy('created_at', 'ASC');
 
@@ -214,27 +214,33 @@ class ProductController extends Controller
                ->editColumn('referensi', function (special_product $model) {
                     return '<img src="http://localhost:8000/' . $model->referensi . ' "height="100px" ">';
                })
-               ->addColumn('action', 'AdminMaster.template.action_special')
-               ->addColumn('status', 'AdminMaster.template.label_special')
+               ->addColumn('action', 'AdminMaster.template.action_customize')
+               ->addColumn('status', 'AdminMaster.template.label_customize')
                ->addIndexColumn()
                ->rawColumns(['referensi','action','status'])
                ->toJson();
      }
 
-     public function status_special($id)
+     public function status_customize($id)
      {
-          $status_specialproduct = \DB::table('special_product')->where('id', $id)->first();
-          $status_sekarang = $status_specialproduct->status;
+          $status_customizeproduct = \DB::table('special_product')->where('id', $id)->first();
+          $status_sekarang = $status_customizeproduct->status;
 
           if ($status_sekarang == 0) {
                \DB::table('special_product')->where('id', $id)->update([
                     'status' => 1
                ]);
-          } else {
+          }
+          else if($status_sekarang == 1){
+               \DB::table('special_product')->where('id', $id)->update([
+                    'status' => 2
+               ]);
+          }
+          else {
                \DB::table('special_product')->where('id', $id)->update([
                     'status' => 0
                ]);
           }
-          return redirect()->route('adminmaster.productmaster.special')->with(['success' => 'status has been changed!']);
+          return redirect()->route('adminmaster.productmaster.customize')->with(['success' => 'status has been changed!']);
      }
 }

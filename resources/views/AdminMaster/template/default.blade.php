@@ -119,15 +119,10 @@
             </a>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
-            <a href="/admin_master/ProductSpecial" class="nav-link">
+            <a href="/admin_master/CustomizeProduct" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
-=======
-            <a href="/admin_master/Sell/show" class="nav-link">
-              <i class="nav-icon fa fa-file"></i>
->>>>>>> c623c3ccb9ee80909b90fb01793e971524dd3dec
               <p>
-                SPECIAL PRODUCT
+                CUSTOMIZE PRODUCT
               </p>
             </a>
           </li>
@@ -227,7 +222,7 @@
 
 @stack('scriptsadminmaster')
 
-@stack('scriptsadminmasterspecial')
+@stack('scriptsadminmastercustomize')
 
 @stack('scriptsadminusers')
 
