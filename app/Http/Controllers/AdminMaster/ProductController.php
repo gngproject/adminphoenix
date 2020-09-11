@@ -6,6 +6,7 @@ use DataTables;
 use App\product;
 use GuzzleHttp\Client;
 use App\Http\Requests;
+use App\special_product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -198,5 +199,42 @@ class ProductController extends Controller
                ]);
           }
           return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'status has been changed!']);
+     }
+
+     public function specialview()
+     {
+          return view('AdminMaster.ProductsSpecial');
+     }
+
+     public function productDataSpecial()
+     {
+          $special_product = special_product::orderBy('created_at', 'ASC');
+
+          return datatables()->of($special_product)
+               ->editColumn('referensi', function (special_product $model) {
+                    return '<img src="http://localhost:8000/' . $model->referensi . ' "height="100px" ">';
+               })
+               ->addColumn('action', 'AdminMaster.template.action_special')
+               ->addColumn('status', 'AdminMaster.template.label_special')
+               ->addIndexColumn()
+               ->rawColumns(['referensi','action','status'])
+               ->toJson();
+     }
+
+     public function status_special($id)
+     {
+          $status_specialproduct = \DB::table('special_product')->where('id', $id)->first();
+          $status_sekarang = $status_specialproduct->status;
+
+          if ($status_sekarang == 0) {
+               \DB::table('special_product')->where('id', $id)->update([
+                    'status' => 1
+               ]);
+          } else {
+               \DB::table('special_product')->where('id', $id)->update([
+                    'status' => 0
+               ]);
+          }
+          return redirect()->route('adminmaster.productmaster.special')->with(['success' => 'status has been changed!']);
      }
 }

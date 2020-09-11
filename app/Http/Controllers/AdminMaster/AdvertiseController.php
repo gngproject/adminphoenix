@@ -101,33 +101,33 @@ class AdvertiseController extends Controller
           // dd($test);
      }
 
-     public function AdsDeleteSoft($id_ads)
-     {
-          $request      = $this->_client->request('DELETE', "advertise/delete/{$id_ads}");
-          $response     = json_decode($request->getBody()->getContents());
-          return redirect("/admin_master/AdvertShow")->with(['success' => 'Delete Has Been Success !']);
-          // dd($response);
-     }
+     // public function AdsDeleteSoft($id_ads)
+     // {
+     //      $request      = $this->_client->request('DELETE', "advertise/delete/{$id_ads}");
+     //      $response     = json_decode($request->getBody()->getContents());
+     //      return redirect("/admin_master/AdvertShow")->with(['success' => 'Delete Has Been Success !']);
+     //      // dd($response);
+     // }
 
-     public function RestoreAdvertise($id_ads)
-     {
-          $request    = $this->_client->request('GET', "restore/advertise/{$id_ads}");
-          $response   = $request->getBody()->getContents();
-          $responses  = json_decode($response); //jadi data array
-          // var_dump($responses);
-          return redirect("/admin_master/Advertisetrash")->with(['success' => 'restore Has Been Success !']);
-     }
+     // public function RestoreAdvertise($id_ads)
+     // {
+     //      $request    = $this->_client->request('GET', "restore/advertise/{$id_ads}");
+     //      $response   = $request->getBody()->getContents();
+     //      $responses  = json_decode($response); //jadi data array
+     //      // var_dump($responses);
+     //      return redirect("/admin_master/Advertisetrash")->with(['success' => 'restore Has Been Success !']);
+     // }
 
-     public function EdtAdvertise($id_ads)
-     {
-          $data = \DB::table('advertise')->where('advertiseID', $id_ads)->first();
-          // $response      = $this->_client->request('GET', "advertisment/{$id_ads}");
-          // $result        = json_decode($response->getBody()->getContents());
-          // $data          = ['response' => $result];
-          return View::make('AdminMaster.EAdvertise', compact('data'));
-          // return view("AdminMaster.EAdvertise", $data);
-          // var_dump($data);
-     }
+     // public function EdtAdvertise($id_ads)
+     // {
+     //      $data = \DB::table('advertise')->where('advertiseID', $id_ads)->first();
+     //      // $response      = $this->_client->request('GET', "advertisment/{$id_ads}");
+     //      // $result        = json_decode($response->getBody()->getContents());
+     //      // $data          = ['response' => $result];
+     //      return View::make('AdminMaster.EAdvertise', compact('data'));
+     //      // return view("AdminMaster.EAdvertise", $data);
+     //      // var_dump($data);
+     // }
 
      public function update_photo_advertise($advertise_img, $db_path, $folder)
      {
@@ -174,14 +174,14 @@ class AdvertiseController extends Controller
 
      }
 
-     public function PermanentAdv($id_ads)
-     {
-          $request  = $this->_client->request('GET', "advertise/deletepermanent/{$id_ads}");
-          $response = $request->getBody()->getContents();
-          $responses = json_decode($response); //jadi data array
-          // dd($responses);
-          return redirect("/admin_master/Advertisetrash")->with(['success' => 'Delete Permanent Has Been Success !']);
-     }
+     // public function PermanentAdv($id_ads)
+     // {
+     //      $request  = $this->_client->request('GET', "advertise/deletepermanent/{$id_ads}");
+     //      $response = $request->getBody()->getContents();
+     //      $responses = json_decode($response); //jadi data array
+     //      // dd($responses);
+     //      return redirect("/admin_master/Advertisetrash")->with(['success' => 'Delete Permanent Has Been Success !']);
+     // }
 
      public function status($id_ads)
      {

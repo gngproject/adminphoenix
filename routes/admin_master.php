@@ -28,6 +28,12 @@ Route::post('/product/tambah', 'ProductController@store')->name('product.add');
 
 Route::get('/product/view/{view}', 'ProductController@view')->name('productmaster.view');
 
+Route::get('/ProductSpecial', 'ProductController@specialview')->name('productmaster.special');
+
+Route::get('/ProductSpecial/data', 'ProductController@productDataSpecial')->name('productmaster.specialdata');
+
+Route::get('/ProductSpecial/status/{status}', 'ProductController@status_special')->name('productspecial.status');
+
 //---------- Users Controller Admin Master ----------//
 Route::get('/UserShow', 'UserController@index')->name('users.show');
 

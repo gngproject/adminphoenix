@@ -118,6 +118,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/admin_master/ProductSpecial" class="nav-link">
+              <i class="nav-icon fa fa-book"></i>
+              <p>
+                SPECIAL PRODUCT
+              </p>
+            </a>
+          </li>
           {{-- @else --}}
           <li class="nav-item">
             <a href="/admin_master/UserShow" class="nav-link">
@@ -212,6 +220,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"> </script>
 
 @stack('scriptsadminmaster')
+
+@stack('scriptsadminmasterspecial')
 
 @stack('scriptsadminusers')
 
