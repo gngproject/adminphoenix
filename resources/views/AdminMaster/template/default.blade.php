@@ -120,7 +120,7 @@
           </li>
           <li class="nav-item">
             <a href="/admin_master/CustomizeProduct" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
+              <i class="nav-icon far fa-edit"></i>
               <p>
                 CUSTOMIZE PRODUCT
               </p>
@@ -156,6 +156,14 @@
               <i class="nav-icon fa fa-file"></i>
               <p>
                 TRANSACTION
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin_master/Pengiriman/show" class="nav-link">
+              <i class="nav-icon fa fa-truck"></i>
+              <p>
+                Pengiriman
               </p>
             </a>
           </li>
@@ -237,6 +245,8 @@
 @stack('scriptsadmintransaction')
 
 @stack('scriptsadminnonactivetransaction')
+
+@stack('scriptspengirim')
 
 </body>
 </html>
