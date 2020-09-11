@@ -30,9 +30,6 @@
           <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link active">Transaction</a>
           </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('adminmaster.voucher.shownonactive') }}" class="nav-link">Non Active</a>
-          </li>
         </ul>
       </div>
     </nav>

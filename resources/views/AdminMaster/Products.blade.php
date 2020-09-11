@@ -38,7 +38,6 @@
             <th>Stocks</th>
             <th>Weight (gram)</th>
             <th>Berlian Yang Dipasang (Carats)</th>
-            <th>Quantity Berlian (Pcs)</th>
             <th>Image 1</th>
             <th>Created</th>
             <th>Updated</th>
@@ -65,7 +64,6 @@
           { data:'quantity'},
           { data:"weight"},
           { data:'berlian_karat1' },
-          { data:'quantity_berlian1'},
           { data:'Product_img_1'},
           { data:'created_at'},
           { data:'updated_at'},

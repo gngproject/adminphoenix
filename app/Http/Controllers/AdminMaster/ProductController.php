@@ -41,7 +41,7 @@ class ProductController extends Controller
 
           return datatables()->of($product)
                ->editColumn('Product_img_1', function (product $model) {
-                    return '<img src="http://localhost:8000/' . $model->Product_img_1 . ' "height="100px" ">';
+                    return '<img src="http://adminphoenixjewellery.com/' . $model->Product_img_1 . ' "height="100px" ">';
                })
                ->addColumn('action', 'AdminMaster.template.action')
                ->addColumn('status', 'AdminMaster.template.label')

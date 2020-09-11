@@ -42,7 +42,7 @@
                     <div class="info-box-content">
                       <span class="info-box-text text-center text-muted">Product Image 1</span>
                       <span class="info-box-number text-center text-muted mb-0" style="height: 100px">
-                        <img style="height: 100px" src="http://localhost:8000/{{$view->Product_img_1}}">
+                        <img style="height: 100px" src="http://adminphoenixjewellery.com/{{$view->Product_img_1}}">
                       </span>
                     </div>
                   </div>
@@ -52,7 +52,7 @@
                     <div class="info-box-content">
                       <span class="info-box-text text-center text-muted">Product Image 2</span>
                       <span class="info-box-number text-center text-muted mb-0" style="height: 100px">
-                        <img style="height: 100px" src="http://localhost:8000/{{$view->Product_img_2}}">
+                        <img style="height: 100px" src="http://adminphoenixjewellery.com/{{$view->Product_img_2}}">
                       </span>
                     </div>
                   </div>
@@ -62,7 +62,7 @@
                     <div class="info-box-content">
                       <span class="info-box-text text-center text-muted">Product Image 3</span>
                       <span class="info-box-number text-center text-muted mb-0" style="height: 100px">
-                        <img style="height: 100px" src="http://localhost:8000/{{$view->Product_img_3}}">
+                        <img style="height: 100px" src="http://adminphoenixjewellery.com/{{$view->Product_img_3}}">
                       <span>
                     </div>
                   </div>
@@ -72,7 +72,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text text-center text-muted">Product Image 4</span>
                         <span class="info-box-number text-center text-muted mb-0" style="height: 100px">
-                          <img style="height: 100px" src="http://localhost:8000/{{$view->Product_img_4}}">
+                          <img style="height: 100px" src="http://adminphoenixjewellery.com/{{$view->Product_img_4}}">
                         <span>
                     </div>
                   </div>
@@ -82,7 +82,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text text-center text-muted">Product Image 5</span>
                         <span class="info-box-number text-center text-muted mb-0" style="height: 100px">
-                          <img style="height: 100px" src="http://localhost:8000/{{$view->Product_img_5}}">
+                          <img style="height: 100px" src="http://adminphoenixjewellery.com/{{$view->Product_img_5}}">
                         <span>
                     </div>
                   </div>

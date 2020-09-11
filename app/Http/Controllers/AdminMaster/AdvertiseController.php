@@ -41,8 +41,9 @@ class AdvertiseController extends Controller
           $advertises = advertisment::where('status', '=', 1)->get();
 
           return datatables()->of($advertises)
-               ->editColumn('advertise_img', function (advertisment $model) {
-                    return '<img src="http://192.168.1.106:5000/' . $model->advertise_img . ' "height="100px" ">';
+
+                ->editColumn('advertise_img', function ($advertises) {
+                    return '<img src="http://adminphoenixjewellery.com/' . $advertises->advertise_img . ' "height="100px" ">';
                })
                ->addColumn('actionadvertise', 'AdminMaster.template.action_advert')
                ->addColumn('status', 'AdminMaster.template.label')
@@ -61,8 +62,8 @@ class AdvertiseController extends Controller
           $advertises = advertisment::where('status', '=', 0)->get();
 
           return datatables()->of($advertises)
-               ->editColumn('advertise_img', function (advertisment $model) {
-                    return '<img src="http://192.168.1.106:5000/' . $model->advertise_img . ' "height="100px" ">';
+               ->editColumn('advertise_img', function ($advertises) {
+                    return '<img src="http://adminphoenixjewellery.com/' . $advertises->advertise_img . ' "height="100px" ">';
                })
                ->addColumn('actionadvertise', 'AdminMaster.template.action_advert')
                ->addColumn('status', 'AdminMaster.template.label')
