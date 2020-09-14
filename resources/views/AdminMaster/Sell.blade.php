@@ -80,9 +80,9 @@
         ],
         ajax: '{{ route('adminmaster.penjualan.data') }}',
         columns: [
-          { data:'ID_payment' },
-          { data:'nama_penerima' },
+          { data:'TransactionID' },
           { data:'name' },
+          { data:'Product_Name' },
           { data:'quantity' },
           { data:'status' },
           { data:'created_at' },

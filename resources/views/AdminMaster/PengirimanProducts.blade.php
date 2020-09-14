@@ -28,7 +28,6 @@
                                     <th>Alamat</th>
                                     <th>Subtotal</th>
                                     <th>Tanggal</th>
-                                    <th>No.Resi</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                     </tr>
@@ -67,14 +66,13 @@
                         ],
                         ajax: '{{ route('adminmaster.pengiriman.data') }}',
                         columns: [
-                            { data:'ID_payment' },
-                            { data:'nama_penerima' },
-                            { data:'telp' },
+                            { data:'TransactionID' },
+                            { data:'nama' },
+                            { data:'phone' },
                             { data:'alamat' },
-                            { data:'newtotal' },
+                            { data:'amount' },
                             { data:'created_at' },
-                            { data:'no_resi' },
-                            { data:'status_kirim' },
+                            { data:'status' },
                             { data:'action' },
                         ],
                     });

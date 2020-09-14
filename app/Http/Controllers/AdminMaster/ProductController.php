@@ -244,41 +244,5 @@ class ProductController extends Controller
           }
           return redirect()->route('adminmaster.productmaster.customize')->with(['success' => 'status has been changed!']);
      }
-     
-     //Controller Pengiriman Products
-     public function pengiriman_view(){
-         
-          return view('AdminMaster.PengirimanProducts');
-     }
 
-     public function pengiriman_data(){
-
-         
-          $pengiriman = DB::table('pengiriman')->get();
-          return datatables()->of($pengiriman)
-          ->addColumn('action', 'AdminMaster.template.action_pengirim')
-          ->addColumn('status', 'AdminMaster.template.label_pengirim')
-          ->addIndexColumn()
-          ->rawColumns(['action','status'])
-          // ->rawColumns(['status'])
-          ->toJson();
-     }
-     public function pengiriman_detail($id_payment)
-     {
-     //     $request       = $this->_client->request('GET',"pengiriman/{$id_payment}");
-          
-     //     $result        = json_decode($request->getBody()->getContents());
-          // $pengiriman = DB::table('pengiriman')->get();
-          $result = \DB::table('pengiriman')
-                    ->join('product','pengiriman.productID','=',"product.productID")
-                    ->join('users_table','pengiriman.userID','=',"users_table.id")
-                    ->select('pengiriman.*', 'users_table.name', 'product.Product_Name', 'product.quantity', 'product.price')
-                    ->where('ID_payment', $id_payment)->get();
-          // $result
-          // dd($pengiriman);
-          // dd($id_payment);
-          
-         return view('AdminMaster.ViewPengiriman', ['result'=> $result]);
-         dd($result);
-     }
 }

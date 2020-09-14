@@ -34,10 +34,7 @@ Route::get('/CustomizeProduct/data', 'ProductController@productDataCustomize')->
 
 Route::get('/CustomizeProduct/status/{status}', 'ProductController@status_customize')->name('customizeproduct.status');
 
-//------- Pengiriman Controller Admin Master
-Route::get('/Pengiriman/show', 'ProductController@pengiriman_view')->name('pengirim.show');
-Route::get('/Pengiriman/data', 'ProductController@pengiriman_data')->name('pengiriman.data');
-Route::get('/Pengiriman/{id_payment}/view', 'ProductController@pengiriman_detail')->name('pengirim.detail');
+
 
 //---------- Users Controller Admin Master ----------//
 Route::get('/UserShow', 'UserController@index')->name('users.show');
@@ -120,3 +117,12 @@ Route::get('/restore/sell/{id}', 'PenjualanController@RestoreSell')->name('penju
 
 //---------- Pengiriman Controller Admin Master ----------//
 Route::get('/Pengiriman', 'PengirimanController@index')->name('pengiriman.show');
+
+Route::get('/Pengiriman/data', 'PengirimanController@pengiriman_data')->name('pengiriman.data');
+
+Route::get('/Pengiriman/{transactionID}/view', 'PengirimanController@pengiriman_detail')->name('pengirim.detail');
+
+Route::post('/Pengiriman/update','PengirimanController@ShippingOrder')->name('pengiriman.update');
+
+
+
