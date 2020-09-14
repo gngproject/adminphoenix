@@ -119,10 +119,15 @@
             </a>
           </li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a href="/admin_master/ProductSpecial" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
+=======
+            <a href="/admin_master/CustomizeProduct" class="nav-link">
+              <i class="nav-icon far fa-edit"></i>
+>>>>>>> a4f6b18b2dfa6257e3fd57e0c571dd457768de5b
               <p>
-                SPECIAL PRODUCT
+                CUSTOMIZE PRODUCT
               </p>
             </a>
           </li>
@@ -160,6 +165,7 @@
             </a>
           </li>
           <li class="nav-item">
+<<<<<<< HEAD
             <a href="" class="nav-link">
               <i class="nav-icon fa fa-truck"></i>
               <p>
@@ -168,6 +174,16 @@
             </a>
           </li>
 
+=======
+            <a href="/admin_master/Pengiriman/show" class="nav-link">
+              <i class="nav-icon fa fa-truck"></i>
+              <p>
+                Pengiriman
+              </p>
+            </a>
+          </li>
+          
+>>>>>>> a4f6b18b2dfa6257e3fd57e0c571dd457768de5b
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
@@ -230,7 +246,7 @@
 
 @stack('scriptsadminmaster')
 
-@stack('scriptsadminmasterspecial')
+@stack('scriptsadminmastercustomize')
 
 @stack('scriptsadminusers')
 
@@ -245,6 +261,8 @@
 @stack('scriptsadmintransaction')
 
 @stack('scriptsadminnonactivetransaction')
+
+@stack('scriptspengirim')
 
 </body>
 </html>
