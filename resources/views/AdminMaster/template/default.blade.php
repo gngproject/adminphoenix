@@ -119,13 +119,8 @@
             </a>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
             <a href="/admin_master/ProductSpecial" class="nav-link">
               <i class="nav-icon fa fa-book"></i>
-=======
-            <a href="/admin_master/Sell/show" class="nav-link">
-              <i class="nav-icon fa fa-file"></i>
->>>>>>> c623c3ccb9ee80909b90fb01793e971524dd3dec
               <p>
                 SPECIAL PRODUCT
               </p>
@@ -164,7 +159,15 @@
               </p>
             </a>
           </li>
-          
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-truck"></i>
+              <p>
+                PENGIRIMAN
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">

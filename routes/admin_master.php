@@ -110,3 +110,8 @@ Route::get('/Selltrash', 'PenjualanController@trash')->name('penjualan.trash');
 Route::get('/Delete/sell/{id}', 'PenjualanController@TransDeleteSoft')->name('penjualan.soft');
 
 Route::get('/restore/sell/{id}', 'PenjualanController@RestoreSell')->name('penjualan.restore');
+
+
+
+//---------- Pengiriman Controller Admin Master ----------//
+Route::get('/Pengiriman', 'PengirimanController@index')->name('pengiriman.show');

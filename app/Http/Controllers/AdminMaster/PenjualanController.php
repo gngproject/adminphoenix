@@ -35,7 +35,7 @@ class PenjualanController extends Controller
 
     public function PenjualanDataMaster($id_payment)
     {
-        $Penjualans = DB::table('midpayments')
+        $Penjualans = DB::table('transaction_detail')
             ->join('product','midpayments.productID','=',"product.productID")
             ->join('users_table','midpayments.userID','=',"users_table.id")
             ->where('midpayments.id','=',$id_payment)
