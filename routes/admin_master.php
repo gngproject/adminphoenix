@@ -18,6 +18,11 @@ Route::get('/product/addform', 'ProductController@FormAddView')->name('productma
 
 Route::post('/product/tambah', 'ProductController@store')->name('product.add');
 
+Route::get('/product/view/{view}', 'ProductController@view')->name('productmaster.view');
+
+Route::get('/product/edit/{productID}', 'ProductController@editView')->name('productmaster.edit');
+Route::post('/product/updatedata/{productID}', 'ProductController@update')->name('productmaster.updatedata');
+
 // Route::post('/ProductUpdate', 'ProductController@ProductUpdate');
 
 // Route::get('/DetailProduct/{id_product}','ProductController@DetailProduct')->name('DetailProduct');
@@ -27,7 +32,7 @@ Route::post('/product/tambah', 'ProductController@store')->name('product.add');
 // });
 
 
-Route::get('/product/view/{view}', 'ProductController@view')->name('productmaster.view');
+// Product Customize
 
 Route::get('/CustomizeProduct', 'ProductController@customizeview')->name('productmaster.customize');
 
@@ -123,7 +128,4 @@ Route::get('/Pengiriman/data', 'PengirimanController@pengiriman_data')->name('pe
 
 Route::get('/Pengiriman/{transactionID}/view', 'PengirimanController@pengiriman_detail')->name('pengirim.detail');
 
-Route::post('/Pengiriman/update','PengirimanController@ShippingOrder')->name('pengiriman.update');
-
-
-
+Route::post('/Pengiriman/update', 'PengirimanController@ShippingOrder')->name('pengiriman.update');
