@@ -41,12 +41,10 @@
         </div>
         <div class="form-group">
             <label for="advertise_img">Advertise Image</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="advertise_img" name="advertise_img">
-                <label class="custom-file-label" for="advertise_img">Choose file</label>
-              </div>
-            </div>
+              <input type="file" class="form-control" id="advertise_img" name="advertise_img">
+              @if ($errors->has('advertise_img'))
+                <span class="text-danger">{{ $errors->first('advertise_img') }}</span>
+              @endif
         </div>
       </div>
     </div>

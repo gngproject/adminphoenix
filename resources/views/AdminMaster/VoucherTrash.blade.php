@@ -13,7 +13,7 @@
       <div class="col-sm-12">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{ route('adminmaster.voucher.show') }}">Voucher</a></li>
-          <li class="breadcrumb-item active">Non-Active Voucher</li>
+          <li class="breadcrumb-item active"><a href="{{ route('adminmaster.voucher.shownonactive') }}">Non-Active Voucher</a></li>
         </ol>
       </div>
     </div>
@@ -50,8 +50,7 @@
                 <th>ID Voucher</th>
                 <th>Code Voucher</th>
                 <th>Tipe Voucher</th>
-                <th>Voucher Persen (%)</th>
-                <th>Voucher Discount</th>
+                <th>Value Voucher</th>
                 <th>Voucher Max User</th>
                 <th>Created</th>
                 <th>Updated</th>
@@ -87,8 +86,7 @@
           { data:'voucherID_view' },
           { data:'voucherCode' },
           { data:'type' },
-          { data:'voucherPercent' },
-          { data:'voucherDiscount' },
+          { data:'value' },
           { data:'voucherMax_user' },
           { data:'created_at' },
           { data:'updated_at' },

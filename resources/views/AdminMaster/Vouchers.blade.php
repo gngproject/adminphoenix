@@ -27,7 +27,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link active">Voucher</a>
+            <a href="{{ route('adminmaster.voucher.show') }}" class="nav-link active">Voucher</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('adminmaster.voucher.shownonactive') }}" class="nav-link">Non Active</a>

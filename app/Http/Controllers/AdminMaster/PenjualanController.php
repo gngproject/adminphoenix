@@ -36,8 +36,8 @@ class PenjualanController extends Controller
     {
         $Penjualans = DB::table('transaction_detail')
             ->join('product','transaction_detail.ProductID','=',"product.productID")
-            ->join('users_table','transaction_detail.userID','=',"users_table.id")
-            ->select('transaction_detail.*', 'users_table.name', 'product.Product_Name', 'product.quantity')
+            ->join('users','transaction_detail.userID','=',"users.id")
+            ->select('transaction_detail.*', 'users.name', 'product.Product_Name', 'product.stock')
             ->where('transaction_detail.TransactionID')
             ->get();
 
