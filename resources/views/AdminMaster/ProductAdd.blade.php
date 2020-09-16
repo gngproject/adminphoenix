@@ -26,6 +26,7 @@
     <div class="col-md-12">
       <form action="{{ route('adminmaster.product.add') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('POST')
         <div class="card-body">
           <div class="form-group">
             <label for="productID_view">Product ID</label>
@@ -59,10 +60,10 @@
             @endif
           </div>
           <div class="form-group">
-            <label for="Price">Quantity</label>
-            <input type="text" class="form-control" id="quantity" name="quantity">
-            @if ($errors->has('quantity'))
-              <span class="text-danger">{{ $errors->first('quantity') }}</span>
+            <label for="stock">Stock</label>
+            <input type="text" class="form-control" id="stock" name="stock">
+            @if ($errors->has('stock'))
+              <span class="text-danger">{{ $errors->first('stock') }}</span>
             @endif
           </div>
           <div class="form-group">

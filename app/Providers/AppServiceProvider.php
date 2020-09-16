@@ -5,7 +5,8 @@ namespace App\Providers;
 use DB;
 use App\product;
 use App\userTable;
-use App\midpayment;
+use App\Pengiriman;
+use App\Transaction_detail;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;
@@ -38,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
         //Home-Master Administrator
         view()->composer(['*'], function ($view) {
-            $AllCount          = DB::table('users_table')->count();
+            $AllCount          = DB::table('users')->count();
             $view->with('user',$AllCount);
         });
 
@@ -48,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer(['*'], function ($view) {
-            $AllCount          = DB::table('midpayments')->count();
+            $AllCount          = DB::table('transaction_detail')->count();
             $view->with('transaction',$AllCount);
         });
         ///////////////////////////
@@ -56,24 +57,24 @@ class AppServiceProvider extends ServiceProvider
         //Table Transaksi - admin pengirim
         view()->composer(['*'], function ($view) {
             $user              = session()->get("sessionKey");
-            $TotalCount        = DB::table('midpayments')->where('status', 'success')->sum('newtotal');
+            $TotalCount        = DB::table('transaction_detail')->where('status', 'success')->sum('amount');
             $view->with('total',$TotalCount);
         });
         //////////////////////////////////
 
         //Home-Admin Pengirim
         view()->composer(['*'], function ($view) {
-            $status_new        = DB::table('midpayments')->where('status_kirim', 1)->count();
+            $status_new        = DB::table('pengiriman')->where('status_kirim', 1)->count();
             $view->with('status_new',$status_new);
         });
 
         view()->composer(['*'], function ($view) {
-            $status_shipping        = DB::table('midpayments')->where('status_kirim', 3)->count();
+            $status_shipping        = DB::table('pengiriman')->where('status_kirim', 3)->count();
             $view->with('status_shipping',$status_shipping);
         });
 
         view()->composer(['*'], function ($view) {
-            $status_done        = DB::table('midpayments')->where('status_kirim', 4)->count();
+            $status_done        = DB::table('pengiriman')->where('status_kirim', 4)->count();
             $view->with('status_done',$status_done);
         });
         ///////////////////////////

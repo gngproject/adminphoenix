@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\AdminMaster;
 
 use DataTables;
-use App\users_table;
+use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,19 +29,19 @@ class UserController extends Controller
 
      public function UsersDataMaster()
      {
-          $users = users_table::orderBy('created_at', 'ASC');
+          $users = User::orderBy('created_at', 'DESC');
 
           return datatables()->of($users)
-          ->editColumn('Photo', function(users_table $model) {
-               return '<img src="http://adminphoenixjewellery.com/'. $model->Photo .' "height="100px" ">';
+          ->editColumn('photo', function(User $model) {
+               return '<img src="http://adminphoenixjewellery.com/'. $model->photo .' "height="100px" ">';
           })
-          ->editColumn('PhotoKTP', function(users_table $model) {
-               return '<img src="http://adminphoenixjewellery.com/'. $model->PhotoKTP .' "height="100px" ">';
+          ->editColumn('photoktp', function(User $model) {
+               return '<img src="http://adminphoenixjewellery.com/'. $model->photoktp .' "height="100px" ">';
           })
           // ->addColumn('action', 'AdminMaster.template.action')
           // ->addColumn('status', 'AdminMaster.template.label')
           ->addIndexColumn()
-          ->rawColumns(['Photo','PhotoKTP'])
+          ->rawColumns(['photo','photoktp'])
           ->toJson();
      }
 

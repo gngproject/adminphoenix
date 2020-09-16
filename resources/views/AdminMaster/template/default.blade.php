@@ -24,7 +24,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <?php
-        $transactionnotif = \DB::select(" SELECT * from midpayments ");
+        $transactionnotif = \DB::select(" SELECT * from transaction_detail ");
       ?>
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -120,7 +120,7 @@
           </li>
           <li class="nav-item">
             <a href="/admin_master/CustomizeProduct" class="nav-link">
-              <i class="nav-icon far fa-edit"></i>
+              <i class="nav-icon fa fa-book"></i>
               <p>
                 CUSTOMIZE PRODUCT
               </p>
@@ -160,14 +160,14 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin_master/Pengiriman/show" class="nav-link">
+            <a href="/admin_master/Pengiriman" class="nav-link">
               <i class="nav-icon fa fa-truck"></i>
               <p>
-                Pengiriman
+                PENGIRIMAN
               </p>
             </a>
           </li>
-          
+
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
@@ -230,7 +230,7 @@
 
 @stack('scriptsadminmaster')
 
-@stack('scriptsadminmastercustomize')
+@stack('')
 
 @stack('scriptsadminusers')
 

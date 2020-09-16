@@ -53,8 +53,7 @@
                 <th>ID Voucher</th>
                 <th>Code Voucher</th>
                 <th>Tipe Voucher</th>
-                <th>Voucher Persen (%)</th>
-                <th>Voucher Discount</th>
+                <th>Value Voucher</th>
                 <th>Voucher Max User</th>
                 <th>Created</th>
                 <th>Updated</th>
@@ -91,8 +90,7 @@
           { data:'voucherID_view' },
           { data:'voucherCode' },
           { data:'type' },
-          { data:'voucherPercent' },
-          { data:'voucherDiscount' },
+          { data:'value' },
           { data:'voucherMax_user' },
           { data:'created_at' },
           { data:'updated_at' },

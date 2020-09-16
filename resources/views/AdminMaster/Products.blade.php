@@ -61,7 +61,7 @@
         columns: [
           { data:"productID_view" },
           { data:"Product_Name"},
-          { data:'quantity'},
+          { data:'stock'},
           { data:"weight"},
           { data:'berlian_karat1' },
           { data:'Product_img_1'},

@@ -4,32 +4,17 @@ namespace App\Http\Controllers\AdminMaster;
 
 use DataTables;
 use App\product;
-use GuzzleHttp\Client;
 use App\Http\Requests;
-use App\special_product;
+use App\customize_product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
-use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductController extends Controller
 {
-     private $__client;
-
-     public function __construct()
-     {
-          $this->_client = new Client([
-               'base_uri'  => 'http://localhost:8000/api/',
-               'headers'  => [
-                    'API_KEY'      => '6c1f8962d43c0a2496ef99c365de68a8',
-                    'Content-Type' => 'application/x-www-form-urlencoded',
-                    'Accept'       => 'application/json'
-               ]
-          ]);
-     }
-
      public function index()
      {
           return view('AdminMaster.Products');
@@ -37,26 +22,17 @@ class ProductController extends Controller
 
      public function productDataMaster()
      {
-          $product = product::orderBy('created_at', 'ASC');
+          $product = product::orderBy('created_at', 'DESC');
 
           return datatables()->of($product)
                ->editColumn('Product_img_1', function (product $model) {
-                    return '<img src="http://adminphoenixjewellery.com/' . $model->Product_img_1 . ' "height="100px" ">';
+                    return '<img src="https://adminphoenixjewellery.com/' . $model->Product_img_1 . ' "height="100px" ">';
                })
                ->addColumn('action', 'AdminMaster.template.action')
                ->addColumn('status', 'AdminMaster.template.label')
                ->addIndexColumn()
                ->rawColumns(['Product_img_1', 'Product_img_3', 'action', 'status'])
                ->toJson();
-     }
-
-     public function Products()
-     {
-          $request    = $this->_client->request('GET', 'productall');
-          $response   = $request->getBody()->getContents();
-          $result     = json_decode($response); //jadi data array
-          // dd($response);
-          return view('AdminMaster.Home', ['TotalProducts' => $result]);
      }
 
      public function view(product $view)
@@ -88,7 +64,7 @@ class ProductController extends Controller
           $Product_type         = $request->input("Product_type");
           $Product_Name         = $request->input("Product_Name");
           $Price                = $request->input("Price");
-          $quantity             = $request->input("quantity");
+          $stock                = $request->input("stock");
           $weight               = $request->input("weight");
           $emas_karat           = $request->input("emas_karat");
           $berlian_karat1       = $request->input("berlian_karat1");
@@ -111,7 +87,7 @@ class ProductController extends Controller
           $Product_table->Product_type = $Product_type;
           $Product_table->Product_Name = $Product_Name;
           $Product_table->Price = $Price;
-          $Product_table->quantity = $quantity;
+          $Product_table->stock = $stock;
           $Product_table->weight = $weight;
           $Product_table->emas_karat = $emas_karat;
           $Product_table->berlian_karat1 =  $berlian_karat1;
@@ -179,6 +155,7 @@ class ProductController extends Controller
                          )
                     );
           }
+          
 
           $result = $Product_table->save();
           return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'Your Product Add Has Been Success!']);
@@ -200,6 +177,8 @@ class ProductController extends Controller
           }
           return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'status has been changed!']);
      }
+     
+     
      // Controller Customize Product
 
      public function customizeview()
@@ -209,22 +188,22 @@ class ProductController extends Controller
 
      public function productDataCustomize()
      {
-          $special_product = special_product::orderBy('created_at', 'ASC');
+          $customproduct = customize_product::orderBy('created_at', 'DESC');
 
-          return datatables()->of($special_product)
-               ->editColumn('referensi', function (special_product $model) {
-                    return '<img src="http://localhost:8000/' . $model->referensi . ' "height="100px" ">';
-               })
-               ->addColumn('action', 'AdminMaster.template.action_customize')
-               ->addColumn('status', 'AdminMaster.template.label_customize')
-               ->addIndexColumn()
-               ->rawColumns(['referensi','action','status'])
-               ->toJson();
+          return datatables()->of($customproduct)
+            ->editColumn('referensi', function (customize_product $model) {
+                return '<img src="https://adminphoenixjewellery.com/' . $model->referensi . ' "height="100px" ">';
+            })
+          ->addColumn('action', 'AdminMaster.template.action_customize')
+          ->addColumn('status', 'AdminMaster.template.label_customize')
+          ->addIndexColumn()
+          ->rawColumns(['referensi','action','status'])
+          ->toJson();
      }
 
      public function status_customize($id)
      {
-          $status_customizeproduct = \DB::table('special_product')->where('id', $id)->first();
+          $status_customizeproduct = \DB::table('customize_product')->where('id', $id)->first();
           $status_sekarang = $status_customizeproduct->status;
 
           if ($status_sekarang == 0) {
@@ -244,41 +223,5 @@ class ProductController extends Controller
           }
           return redirect()->route('adminmaster.productmaster.customize')->with(['success' => 'status has been changed!']);
      }
-     
-     //Controller Pengiriman Products
-     public function pengiriman_view(){
-         
-          return view('AdminMaster.PengirimanProducts');
-     }
 
-     public function pengiriman_data(){
-
-         
-          $pengiriman = DB::table('pengiriman')->get();
-          return datatables()->of($pengiriman)
-          ->addColumn('action', 'AdminMaster.template.action_pengirim')
-          ->addColumn('status', 'AdminMaster.template.label_pengirim')
-          ->addIndexColumn()
-          ->rawColumns(['action','status'])
-          // ->rawColumns(['status'])
-          ->toJson();
-     }
-     public function pengiriman_detail($id_payment)
-     {
-     //     $request       = $this->_client->request('GET',"pengiriman/{$id_payment}");
-          
-     //     $result        = json_decode($request->getBody()->getContents());
-          // $pengiriman = DB::table('pengiriman')->get();
-          $result = \DB::table('pengiriman')
-                    ->join('product','pengiriman.productID','=',"product.productID")
-                    ->join('users_table','pengiriman.userID','=',"users_table.id")
-                    ->select('pengiriman.*', 'users_table.name', 'product.Product_Name', 'product.quantity', 'product.price')
-                    ->where('ID_payment', $id_payment)->get();
-          // $result
-          // dd($pengiriman);
-          // dd($id_payment);
-          
-         return view('AdminMaster.ViewPengiriman', ['result'=> $result]);
-         dd($result);
-     }
 }

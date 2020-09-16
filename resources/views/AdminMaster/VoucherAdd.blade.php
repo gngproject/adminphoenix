@@ -41,15 +41,9 @@
           <div class="form-group">
             <label>Voucher with Percent</label>
             <div class="input-group-append">
-              <input type="text" class="form-control" id="voucherPercent" name="voucherPercent">
+              <input type="text" class="form-control" id="value" name="value">
               <span class="input-group-text">%</span>
             </div>
-          </div>
-          <div class="form-group">
-              <label>Voucher With Nominal</label>
-              <div class="input-group-append">
-                <input type="text" class="form-control" id="voucherDiscount" name="voucherDiscount">
-              </div>
           </div>
           <div class="form-group">
               <label>Voucher Max in User</label>

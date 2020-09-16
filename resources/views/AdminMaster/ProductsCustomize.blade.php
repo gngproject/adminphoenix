@@ -74,37 +74,4 @@
 
 @include('sweetalert::alert')
 
-{{-- <div class="modal fade" id="modalMdshow">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ShowModalTitle">Modal Title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-          @csrf
-          <div class="form-group">
-            <div class="input-group-prepend">
-              <span class=" input-group-text">ID Item</span>
-            </div>
-            <input type="text" class="form-control" id="productID_view" readonly>
-          </div>
-          <div class="form-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">Product Name</span>
-            </div>
-            <input type="text" class="form-control" id="Product_Name" readonly>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> --}}
-
 @endsection

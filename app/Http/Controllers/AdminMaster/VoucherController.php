@@ -85,25 +85,23 @@ class VoucherController extends Controller
 
     public function VoucherAdd(Request $req)
     {
-        $voucherID_view             = $req->input('voucherID_view');
-        $voucherCode                = $req->input('voucherCode');
-        $type                       = $req->input('type');
-        $voucherPercent             = $req->input('voucherPercent');
-        $voucherDiscount            = $req->input('voucherDiscount');
-        $voucherMax_user            = $req->input('voucherMax_user');
+        $voucherID_view     = $req->input('voucherID_view');
+        $voucherCode        = $req->input('voucherCode');
+        $type               = $req->input('type');
+        $value              = $req->input('value');
+        $voucherMax_user    = $req->input('voucherMax_user');
 
         $vouch_table = new voucher();
-        $vouch_table->voucherID_view               = $voucherID_view;
-        $vouch_table->voucherCode                  = $voucherCode;
-        $vouch_table->type                         = $type;
-        $vouch_table->voucherPercent               = $voucherPercent;
-        $vouch_table->voucherDiscount              = $voucherDiscount;
-        $vouch_table->voucherMax_user              = $voucherMax_user;
+        $vouch_table->voucherID_view    = $voucherID_view;
+        $vouch_table->voucherCode       = $voucherCode;
+        $vouch_table->type              = $type;
+        $vouch_table->value             = $value;
+        $vouch_table->voucherMax_user   = $voucherMax_user;
 
         $res=$vouch_table->save();
 
         if($res==1){
-            return redirect("/admin_master/VoucherAddView")->with(['success' => 'Your Voucher Has Been Success !']);
+            return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'Your Voucher Has Been Success !']);
         }
         else{
             return Response()->json(['message' => 'something wrong'],500);
@@ -151,8 +149,7 @@ class VoucherController extends Controller
         $voucherID_view     = $request->input("voucherID_view");
         $voucherCode        = $request->input("voucherCode");
         $type               = $request->input("type");
-        $voucherPercent     = $request->input("voucherPercent");
-        $voucherDiscount    = $request->input("voucherDiscount");
+        $value              = $request->input("value");
         $voucherMax_user    = $request->input("voucherMax_user");
 
         $voucher_table = voucher::find($voucherid);
@@ -169,13 +166,9 @@ class VoucherController extends Controller
         {
             $voucher_table->type = $type;
         }
-        if($voucherPercent !=null || $voucherPercent !='')
+        if($value !=null || $value !='')
         {
-            $voucher_table->voucherPercent = $voucherPercent;
-        }
-        if($voucherDiscount !=null || $voucherDiscount !='')
-        {
-            $voucher_table->voucherDiscount = $voucherDiscount;
+            $voucher_table->value = $value;
         }
         if($voucherMax_user !=null || $voucherMax_user !='')
         {
