@@ -107,7 +107,7 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_1')->store("public/product1")
+                              $request->file('Product_img_1')->store("storage/PhotoProduct")
                          )
                     );
           }
@@ -118,7 +118,7 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_2')->store("public/product2")
+                              $request->file('Product_img_2')->store("storage/PhotoProduct2")
                          )
                     );
           }
@@ -129,7 +129,7 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_3')->store("public/product3")
+                              $request->file('Product_img_3')->store("storage/PhotoProduct3")
                          )
                     );
           }
@@ -140,7 +140,7 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_4')->store("public/product4")
+                              $request->file('Product_img_4')->store("storage/PhotoProduct4")
                          )
                     );
           }
@@ -151,11 +151,11 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_5')->store("public/product5")
+                              $request->file('Product_img_5')->store("storage/PhotoProduct5")
                          )
                     );
           }
-          
+
 
           $result = $Product_table->save();
           return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'Your Product Add Has Been Success!']);
@@ -177,8 +177,8 @@ class ProductController extends Controller
           }
           return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'status has been changed!']);
      }
-     
-     
+
+
      // Controller Customize Product
 
      public function customizeview()
@@ -191,14 +191,14 @@ class ProductController extends Controller
           $customproduct = customize_product::orderBy('created_at', 'DESC');
 
           return datatables()->of($customproduct)
-            ->editColumn('referensi', function (customize_product $model) {
-                return '<img src="https://adminphoenixjewellery.com/' . $model->referensi . ' "height="100px" ">';
-            })
-          ->addColumn('action', 'AdminMaster.template.action_customize')
-          ->addColumn('status', 'AdminMaster.template.label_customize')
-          ->addIndexColumn()
-          ->rawColumns(['referensi','action','status'])
-          ->toJson();
+               ->editColumn('referensi', function (customize_product $model) {
+                    return '<img src="https://adminphoenixjewellery.com/' . $model->referensi . ' "height="100px" ">';
+               })
+               ->addColumn('action', 'AdminMaster.template.action_customize')
+               ->addColumn('status', 'AdminMaster.template.label_customize')
+               ->addIndexColumn()
+               ->rawColumns(['referensi', 'action', 'status'])
+               ->toJson();
      }
 
      public function status_customize($id)
@@ -210,18 +210,15 @@ class ProductController extends Controller
                \DB::table('special_product')->where('id', $id)->update([
                     'status' => 1
                ]);
-          }
-          else if($status_sekarang == 1){
+          } else if ($status_sekarang == 1) {
                \DB::table('special_product')->where('id', $id)->update([
                     'status' => 2
                ]);
-          }
-          else {
+          } else {
                \DB::table('special_product')->where('id', $id)->update([
                     'status' => 0
                ]);
           }
           return redirect()->route('adminmaster.productmaster.customize')->with(['success' => 'status has been changed!']);
      }
-
 }
