@@ -47,6 +47,7 @@
                     </div>
                   </div>
                 </div>
+                @if($view->Product_img_2 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -57,6 +58,8 @@
                     </div>
                   </div>
                 </div>
+                @endif
+                @if($view->Product_img_3 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -67,6 +70,8 @@
                     </div>
                   </div>
                 </div>
+                @endif
+                @if($view->Product_img_4 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -77,6 +82,8 @@
                     </div>
                   </div>
                 </div>
+                @endif
+                @if($view->Product_img_5 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -87,6 +94,7 @@
                     </div>
                   </div>
                 </div>
+                @endif
               </div>
             </div>
             <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
@@ -161,8 +169,8 @@
                     @endif
                   </b>
                 </p>
-                <p class="text-sm">Quantity
-                  <b class="d-block">{{$view->quantity}}</b>
+                <p class="text-sm">Stock
+                  <b class="d-block">{{$view->stock}} pcs</b>
                 </p>
                 <p class="text-sm">Price
                   <b class="d-block">@currency ($view->Price)</b>

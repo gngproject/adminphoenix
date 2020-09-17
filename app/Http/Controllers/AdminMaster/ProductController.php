@@ -76,6 +76,7 @@ class ProductController extends Controller
           $berlian_karat4       = $request->input("berlian_karat4");
           $quantity_berlian4    = $request->input("quantity_berlian4");
           $Gender               = $request->input("Gender");
+          $typeID               = $request->input("typeID");
           $Product_img_1        = $request->file("Product_img_1");
           $Product_img_2        = $request->file("Product_img_2");
           $Product_img_3        = $request->file("Product_img_3");
@@ -98,8 +99,8 @@ class ProductController extends Controller
           $Product_table->quantity_berlian2 =  $quantity_berlian2;
           $Product_table->quantity_berlian3 =  $quantity_berlian3;
           $Product_table->quantity_berlian4 =  $quantity_berlian4;
-
-          // $Product_table->Gender = $Gender;
+          $Product_table->Gender =  $Gender;
+          $Product_table->typeID =  $typeID;
 
           if (!empty($Product_img_1)) {
                $Product_table->Product_img_1 =

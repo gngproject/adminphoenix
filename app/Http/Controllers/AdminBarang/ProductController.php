@@ -41,7 +41,7 @@ class ProductController extends Controller
 
      public function productData()
      {
-          $product = product::orderBy('created_at', 'ASC');
+          $product = product::orderBy('created_at', 'DESC');
 
           return datatables()->of($product)
                ->editColumn('Product_img_1', function (product $model) {

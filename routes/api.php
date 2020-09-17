@@ -18,4 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('/advertise/tambah', 'AdminMaster\AdvertiseController@store')->name('advertise.add');
+//Product - Show All
+Route::get('/Send/ProductAll','API\APIController@apiproductall');
+
+//Product - Women All
+Route::get('/Send/ProductWomen','API\APIController@apiproductwomen');
+
+//Product - Men All
+Route::get('/Send/ProductMen','API\APIController@apiproductmen');
+
+//Product - Universal All
+Route::get('/Send/ProductUnvr','API\APIController@apiproductunvr');
+
+//Advertisment - Show All
+Route::get('/Advertis-All','API\APIController@apiadvertiseall');

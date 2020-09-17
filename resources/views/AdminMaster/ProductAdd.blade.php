@@ -94,7 +94,7 @@
           </div>
           <div class="row">
             <div class="col">
-              <label for="berlian">Berlian Yang Dipasang</label>
+              <label for="berlian">Berlian Yang Dipasang (Carats)</label>
               <input type="number" class="form-control" id="berlian_karat1" name="berlian_karat1" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
               <input type="number" class="form-control" id="berlian_karat2" name="berlian_karat2" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
               <input type="number" class="form-control" id="berlian_karat3" name="berlian_karat3" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
@@ -118,7 +118,7 @@
           </div>
           <div class="form-group">
             <label>Colour & Clarity</label>
-            <select class="form-control" id="colour" name="colour">
+            <select class="form-control" id="typeID" name="typeID">
               <option></option>
               <option value="1">F & VVS</option>
             </select>
