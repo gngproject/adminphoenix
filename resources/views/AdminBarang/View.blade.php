@@ -59,7 +59,7 @@
                   </div>
                 </div>
                 @endif
-                @if($views->Product_img_2 != null)
+                @if($views->Product_img_3 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -71,7 +71,7 @@
                   </div>
                 </div>
                 @endif
-                @if($views->Product_img_2 != null)
+                @if($views->Product_img_4 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -83,7 +83,7 @@
                   </div>
                 </div>
                 @endif
-                @if($views->Product_img_2 != null)
+                @if($views->Product_img_5 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
