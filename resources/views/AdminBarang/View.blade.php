@@ -105,7 +105,7 @@
                   <b class="d-block">
                     @if($views->Product_type == '0')
                       {{ $views->Product_type = 'Diamond Ring' }}
-                    @elseif($view->Product_type == '1')
+                    @elseif($views->Product_type == '1')
                       {{ $views->Product_type = 'Wedding Ring'}}
                     @elseif($views->Product_type == '2')
                       {{ $views->Product_type = 'GIA'}}
@@ -161,8 +161,8 @@
                     @endif
                   </b>
                 </p>
-                <p class="text-sm">Quantity
-                  <b class="d-block">{{$views->quantity}}</b>
+                <p class="text-sm">Stock
+                  <b class="d-block">{{$views->stock}}</b>
                 </p>
                 <p class="text-sm">Price
                   <b class="d-block">@currency ($views->Price)</b>

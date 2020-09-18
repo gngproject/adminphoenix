@@ -229,7 +229,7 @@ class ProductController extends Controller
           $Product_type         = $request->input("Product_type");
           $Product_Name         = $request->input("Product_Name");
           $Price                = $request->input("Price");
-          $quantity             = $request->input("quantity");
+          $stock                = $request->input("stock");
           $weight               = $request->input("weight");
           $emas_karat           = $request->input("emas_karat");
           $berlian_karat1       = $request->input("berlian_karat1");
@@ -241,6 +241,7 @@ class ProductController extends Controller
           $berlian_karat4       = $request->input("berlian_karat4");
           $quantity_berlian4    = $request->input("quantity_berlian4");
           $Gender               = $request->input("Gender");
+          $typeID               = $request->input("typeID");
           $Product_img_1        = $request->file("Product_img_1");
           $Product_img_2        = $request->file("Product_img_2");
           $Product_img_3        = $request->file("Product_img_3");
@@ -252,7 +253,7 @@ class ProductController extends Controller
           $Product_table->Product_type = $Product_type;
           $Product_table->Product_Name = $Product_Name;
           $Product_table->Price = $Price;
-          $Product_table->quantity = $quantity;
+          $Product_table->stock = $stock;
           $Product_table->weight = $weight;
           $Product_table->emas_karat = $emas_karat;
           $Product_table->berlian_karat1 =  $berlian_karat1;
@@ -263,8 +264,8 @@ class ProductController extends Controller
           $Product_table->quantity_berlian2 =  $quantity_berlian2;
           $Product_table->quantity_berlian3 =  $quantity_berlian3;
           $Product_table->quantity_berlian4 =  $quantity_berlian4;
-
-          // $Product_table->Gender = $Gender;
+          $Product_table->Gender =  $Gender;
+          $Product_table->typeID =  $typeID;
 
           if (!empty($Product_img_1)) {
                $Product_table->Product_img_1 =
@@ -272,7 +273,7 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_1')->store("public/product1")
+                              $request->file('Product_img_1')->store("storage/PhotoProduct")
                          )
                     );
           }
@@ -283,7 +284,7 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_2')->store("public/product2")
+                              $request->file('Product_img_2')->store("storage/PhotoProduct2")
                          )
                     );
           }
@@ -294,7 +295,7 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_3')->store("public/product3")
+                              $request->file('Product_img_3')->store("storage/PhotoProduct3")
                          )
                     );
           }
@@ -305,7 +306,7 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_4')->store("public/product4")
+                              $request->file('Product_img_4')->store("storage/PhotoProduct4")
                          )
                     );
           }
@@ -316,13 +317,14 @@ class ProductController extends Controller
                          str_replace(
                               "public",
                               "storage",
-                              $request->file('Product_img_5')->store("public/product5")
+                              $request->file('Product_img_5')->store("storage/PhotoProduct5")
                          )
                     );
           }
 
+
           $result = $Product_table->save();
-          return redirect()->route('adminbarang.product.show')->with(['success' => 'Your Product Add Has Been Success!']);
+          return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'Your Product Add Has Been Success!']);
      }
 
      public function status($id_product)
