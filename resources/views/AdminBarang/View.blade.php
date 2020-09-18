@@ -47,6 +47,7 @@
                     </div>
                   </div>
                 </div>
+                @if($views->Product_img_2 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -57,6 +58,8 @@
                     </div>
                   </div>
                 </div>
+                @endif
+                @if($views->Product_img_2 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -67,6 +70,8 @@
                     </div>
                   </div>
                 </div>
+                @endif
+                @if($views->Product_img_2 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -77,6 +82,8 @@
                     </div>
                   </div>
                 </div>
+                @endif
+                @if($views->Product_img_2 != null)
                 <div class="col-12 col-sm-4">
                   <div class="info-box bg-light">
                     <div class="info-box-content">
@@ -87,6 +94,7 @@
                     </div>
                   </div>
                 </div>
+                @endif
               </div>
             </div>
             <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
