@@ -120,7 +120,7 @@
           </li>
           <li class="nav-item">
             <a href="/admin_master/CustomizeProduct" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
+              <i class="nav-icon fas fa-pencil-ruler"></i>
               <p>
                 CUSTOMIZE PRODUCT
               </p>
