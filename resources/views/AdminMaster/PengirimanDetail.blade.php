@@ -69,11 +69,11 @@
 							</ul>
 						</div>
                     </div>
+                    @endforeach
                     <div class="form-footer pt-5 border-top">
 						<a href="{{ route("adminmaster.pengiriman.show") }}" class="btn btn-secondary btn-default">Back</a>
 					</div>
                 </div>
-                @endforeach
 			</div>
 		</div>
 	</div>

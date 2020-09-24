@@ -1,4 +1,5 @@
 
+
 @if($model->status == 'shipping')
      <a href="{{ route('adminmaster.pengirim.resi', $model->TransactionID) }}" class="btn btn-sm btn-block btn-success">Procced to Shipment</a>
 @elseif($model->status == 'pending')
