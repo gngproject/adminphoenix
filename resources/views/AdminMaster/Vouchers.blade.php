@@ -1,6 +1,6 @@
 @extends('AdminMaster.template.default')
 
-@section('title', 'Data Voucher')
+@section('title', 'Voucher')
 
 @section('content')
 <section class="content-header">

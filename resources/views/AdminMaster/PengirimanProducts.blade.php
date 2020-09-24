@@ -1,6 +1,6 @@
 @extends('AdminMaster.template.default')
 
-@section('title','Pengiriman')
+@section('title','Shipment')
 
 @section('content')
 <main class="main">

@@ -1,6 +1,6 @@
 @extends ('AdminMaster.template.default')
 
-@section('title', 'Data User')
+@section('title', 'Users')
 
 @section('content')
 <section class="content-header">

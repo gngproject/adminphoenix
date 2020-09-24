@@ -28,12 +28,12 @@
                                     <h4>Detail Pelanggan</h4>
                                     <table class="table table-bordered">
                                         <tr>
-                                            <th width="30%">Nama Pelanggan</th>
-                                            <td>{{$result->nama_penerima}}</td>
+                                            <th width="30%">Nama Pelanggan/Penerima</th>
+                                        <td>{{$result->nama}}</td>
                                         </tr>
                                         <tr>
                                             <th>Telp</th>
-                                            <td>{{$result->telp}}</td>
+                                            <td>{{$result->phone}}</td>
                                         </tr>
                                         <tr>
                                             <th>Alamat</th>
@@ -46,20 +46,18 @@
                                         <tr>
                                             <th>Nomor Resi</th>
                                             <td>
-                                                @if ($result->status_kirim == 1)
-                                                <form action="{{ route('adminpengirim.pengiriman.update') }}" method="post">
+                                                <form action="{{ route('adminmaster.pengiriman.update') }}" method="post">
                                                     @csrf
                                                     <div class="input-group">
-                                                        <input type="hidden" name="ID_payment" id="ID_payment" value="{{$result->ID_payment}}">
-                                                        <input type="text" name="tracking_number" id="tracking_number" placeholder="Masukkan Nomor Resi" class="form-control" required>
+                                                        <input type="hidden" name="TransactionID" id="TransactionID" value="{{$result->TransactionID}}">
+                                                        <input type="hidden" name="userID" id="userID" value="{{$result->id}}">
+                                                        <input type="hidden" name="ProductID" id="ProductID" value="{{$result->ProductID}}">
+                                                        <input type="text" name="no_resi" id="no_resi" placeholder="Masukkan Nomor Resi" class="form-control" required>
                                                         <div class="input-group-append">
                                                             <button class="btn btn-secondary" type="submit">Kirim</button>
                                                         </div>
                                                     </div>
                                                 </form>
-                                                @else
-                                                {{ $result->tracking_number }}
-                                                @endif
                                             </td>
                                         </tr>
                                     </table>
@@ -78,7 +76,7 @@
                                         </tr>
                                         <tr>
                                             <th>Total</th>
-                                            <td>@currency($result->newtotal)</td>
+                                            <td>@currency($result->amount)</td>
                                         </tr>
                                         <tr>
                                             <th>Tanggal Transfer</th>
@@ -102,8 +100,8 @@
                                         <tr>
                                             <td>{{$result->Product_Name}}</td>
                                             <td>{{$result->quantity}}</td>
-                                            <td>@currency($result->price)</td>
-                                            <td>@currency($result->newtotal)</td>
+                                            <td>@currency($result->Price)</td>
+                                            <td>@currency($result->amount)</td>
                                         </tr>
                                     </table>
                                 </div>

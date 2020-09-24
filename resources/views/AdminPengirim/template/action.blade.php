@@ -1,1 +1,1 @@
-<a href="{{ route('adminpengirim.pengiriman.detail', $model) }}" class="btn btn-sm btn-block btn-success">View</a>
+<a href="{{ route('adminpengirim.pengiriman.detail', $model->TransactionID) }}" class="btn btn-sm btn-block btn-primary">View</a>

@@ -99,8 +99,8 @@ class PengirimanController extends Controller
                   ->join('users','pengiriman.userID','=',"users.id")
                   ->join('transaction_detail','pengiriman.TransactionID','=',"pengiriman.TransactionID")
                   ->select('pengiriman.*', 'product.*', 'users.*', 'transaction_detail.*')
-                  ->where('pengiriman.TransactionID','=',$TransactionID)->get();
-       return view('AdminMaster.PengirimanDetail', ['model'=> $result]);
+                  ->where('pengiriman.TransactionID','=',$TransactionID)->first();
+       return view('AdminMaster.PengirimanDetail')->with(compact('result'));
     }
 
 

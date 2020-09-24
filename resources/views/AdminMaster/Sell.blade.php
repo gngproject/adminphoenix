@@ -1,6 +1,6 @@
 @extends('AdminMaster.template.default')
 
-@section('title', 'Data Transaksi')
+@section('title', 'Transaction')
 
 @section('content')
 

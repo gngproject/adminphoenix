@@ -1,4 +1,4 @@
-@extends('AdminMaster.template.default')
+@extends('AdminPengirim.template.default')
 
 @section('title','Shipment Detail')
 
@@ -71,7 +71,7 @@
                     </div>
                     
                     <div class="form-footer pt-5 border-top">
-						<a href="{{ route("adminmaster.pengiriman.show") }}" class="btn btn-secondary btn-default">Back</a>
+						<a href="{{ route("adminpengirim.pengiriman.home") }}" class="btn btn-secondary btn-default">Back</a>
 					</div>
                 </div>
 			</div>

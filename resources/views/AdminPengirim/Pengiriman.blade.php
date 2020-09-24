@@ -1,6 +1,6 @@
 @extends('AdminPengirim.template.default')
 
-@section('title','Pengiriman')
+@section('title','Shipment')
 
 @section('content')
 <main class="main">
@@ -22,13 +22,10 @@
                             <table id="dataTables" class="table table-bordered table-striped text-center">
                                 <thead>
                                     <tr>
-                                    <th>ID Payment</th>
-                                    <th>Pelanggan</th>
-                                    <th>Telp</th>
-                                    <th>Alamat</th>
-                                    <th>Subtotal</th>
+                                    <th>Order ID</th>
+                                    <th>Code</th>
+                                    <th>Truck Number</th>
                                     <th>Tanggal</th>
-                                    <th>No.Resi</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                     </tr>
@@ -67,13 +64,10 @@
                         ],
                         ajax: '{{ route('adminpengirim.pengiriman.data') }}',
                         columns: [
-                            { data:'ID_payment' },
-                            { data:'nama_penerima' },
-                            { data:'telp' },
-                            { data:'alamat' },
-                            { data:'newtotal' },
+                            { data:'TransactionID' },
+                            { data:'shipmentcode' },
+                            { data:'no_resi' },
                             { data:'created_at' },
-                            { data:'tracking_number' },
                             { data:'status' },
                             { data:'action' },
                         ],
@@ -86,6 +80,7 @@
                         });
                     });
                 </script>
+
                 @endpush
                 @include('sweetalert::alert')
             </div>

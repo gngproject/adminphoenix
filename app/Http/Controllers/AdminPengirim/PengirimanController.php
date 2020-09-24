@@ -27,69 +27,95 @@ class PengirimanController extends Controller
           ]);
     }
 
-    public function index()
+        public function index()
     {
-        // $request  = $this->_client->request('GET','pengiriman/show');
-        // $response = $request->getBody()->getContents();
-        // $responses = json_decode($response);//jadi data array
         return view('AdminPengirim.Pengiriman');
     }
 
-    public function PengirimanData()
+    public function pengiriman_data()
     {
-        $midpayments = midpayment::all();
-
-        return datatables()->of($midpayments)
+        
+        $pengiriman = DB::table('pengiriman')->where('status_kirim','=',3)->get();
+        return datatables()->of($pengiriman)
         ->addColumn('action', 'AdminPengirim.template.action')
         ->addColumn('status', 'AdminPengirim.template.label')
         ->addIndexColumn()
         ->rawColumns(['action','status'])
+        // ->rawColumns(['status'])
         ->toJson();
     }
 
-    // public function searchbystatus()
-    // {
-    //     $orders = midpayment::where('status', '=', 'success')->get();
-
-    //     if (request()->q != '') {
-    //         $orders = $orders->where(function($q) {
-    //             $q->where('nama_penerima', 'LIKE', '%' . request()->q . '%')
-    //             ->orWhere('ID_payment', 'LIKE', '%' . request()->q . '%')
-    //             ->orWhere('alamat', 'LIKE', '%' . request()->q . '%');
-    //         });
-    //     }
-
-    //     if (request()->status_kirim != '') {
-    //         $orders = $orders->where('status_kirim', request()->status_kirim);
-    //     }
-    //     $orders = $orders->paginate(10);
-    //     return view('AdminPengirim.Pengiriman', compact('orders'));
-    // }
-
-    public function Detail($id_payment)
+    public function inputnumbershipping($TransactionID)
     {
-        $request       = $this->_client->request('GET',"pengiriman/{$id_payment}");
-        $result        = json_decode($request->getBody()->getContents());
-
-        return view('AdminPengirim.ViewPengiriman', ['result'=> $result]);
-        // dd($result);
+        $result = \DB::table('transaction_detail')
+                  ->join('product','transaction_detail.productID','=',"product.productID")
+                  ->join('users','transaction_detail.userID','=',"users.id")
+                  ->select('transaction_detail.*', 'product.*', 'users.*')
+                  ->where('transaction_detail.TransactionID','=',$TransactionID)->get();
+       return view('AdminPengirim.ViewPengiriman', ['result'=> $result]);
+    //    dd($result);
     }
 
     public function ShippingOrder(Request $request)
     {
-        $response = $this->_client->request("POST","pengiriman",
-        [
-            "form_params" =>[
-                      'ID_payment'       => $request->get("ID_payment"),
-                      'tracking_number'  => $request->get("tracking_number"),
-                      'status_kirim'     => 3,
-            ],
-
+        $order = pengiriman::where('TransactionID', $request->TransactionID)
+        ->create([
+            'TransactionID'     => $request->TransactionID,
+            'userID'            => $request->userID,
+            'ProductID'         => $request->ProductID,
+            'no_resi'           => $request->no_resi,
+            'shipmentcode'      => 'Shipment-' . uniqid(),
+            'status_kirim'      => 3,
         ]);
 
-        $result = $response->getStatusCode();
-        return redirect(route('adminpengirim.pengiriman.home'))->with(['success' => 'Tracking Number has been successfully !']);
+        if(empty($order))
+        {
+            return response()->json(['message' => 'error'],500);
+            } else {
+            return redirect(route('adminpengiriman.pengiriman.show'))->with(['success' => 'Truck Number has been successfully !']);
+        }
+
     }
+
+    public function statuspengiriman($id)
+    {
+          $status_pengiriman = \DB::table('pengiriman')->where('id', $id)->first();
+          $status_sekarang = $status_pengiriman->status;
+
+            if ($status_sekarang == 0) {
+               \DB::table('pengiriman')->where('id', $id)->update([
+                    'status' => 1
+            ]);
+        }
+            else if($status_sekarang == 1){
+               \DB::table('pengiriman')->where('id', $id)->update([
+                    'status' => 2
+            ]);
+        }
+            else if($status_sekarang == 2){
+                \DB::table('pengiriman')->where('id', $id)->update([
+                 'status' => 3
+            ]);
+        }
+            else {
+                \DB::table('pengiriman')->where('id', $id)->update([
+                    'status' => 0
+            ]);
+        }
+        return redirect()->route('adminpengiriman.pengiriman.show')->with(['success' => 'status has been changed!']);
+    }
+
+    public function pengirimandetail($TransactionID)
+    {
+        $result = \DB::table('pengiriman')
+                  ->join('product','pengiriman.productID','=',"product.productID")
+                  ->join('users','pengiriman.userID','=',"users.id")
+                  ->join('transaction_detail','pengiriman.TransactionID','=',"pengiriman.TransactionID")
+                  ->select('pengiriman.*', 'product.*', 'users.*', 'transaction_detail.*')
+                  ->where('pengiriman.TransactionID','=',$TransactionID)->first();
+       return view('AdminPengirim.PengirimanDetail', compact(['result']));
+    }
+
 
 
 }
