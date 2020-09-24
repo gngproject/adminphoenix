@@ -46,12 +46,11 @@
                                         <tr>
                                             <th>Nomor Resi</th>
                                             <td>
-                                                @if ($result->status_kirim == 0)
                                                 <form action="{{ route('adminmaster.pengiriman.update') }}" method="post">
                                                     @csrf
                                                     <div class="input-group">
                                                         <input type="hidden" name="TransactionID" id="TransactionID" value="{{$result->TransactionID}}">
-                                                        <input type="hidden" name="userID" id="userID" value="{{$result->userID}}">
+                                                        <input type="hidden" name="userID" id="userID" value="{{$result->id}}">
                                                         <input type="hidden" name="ProductID" id="ProductID" value="{{$result->ProductID}}">
                                                         <input type="text" name="no_resi" id="no_resi" placeholder="Masukkan Nomor Resi" class="form-control" required>
                                                         <div class="input-group-append">
@@ -59,9 +58,6 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                @else
-                                                {{ $result->no_resi }}
-                                                @endif
                                             </td>
                                         </tr>
                                     </table>
@@ -104,7 +100,7 @@
                                         <tr>
                                             <td>{{$result->Product_Name}}</td>
                                             <td>{{$result->quantity}}</td>
-                                            <td>@currency($result->price)</td>
+                                            <td>@currency($result->Price)</td>
                                             <td>@currency($result->amount)</td>
                                         </tr>
                                     </table>

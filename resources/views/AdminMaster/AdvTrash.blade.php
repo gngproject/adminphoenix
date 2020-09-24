@@ -28,10 +28,10 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin_master/AdvertShow" class="nav-link">Advertise</a>
+            <a href="{{ route('adminmaster.advertise.show') }}" class="nav-link">Advertise</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin_master/Advertisetrash" class="nav-link active">Non Active</a>
+            <a href="{{ route('adminmaster.advertise.shownonactive') }}" class="nav-link active">Non Active</a>
           </li>
         </ul>
       </div>

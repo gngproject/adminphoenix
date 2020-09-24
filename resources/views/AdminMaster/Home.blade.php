@@ -64,7 +64,7 @@
         <!-- small box -->
         <div class="small-box bg-secondary">
           <div class="inner">
-            <h3 class="text-center">4</h3>
+            <h3 class="text-center">{{ $pengiriman }}</h3>
             <p class="text-center">All Pengiriman</p>
           </div>
           <div class="icon">

@@ -292,25 +292,25 @@ class ProductController extends Controller
 
      // Controller Customize Product
 
-     public function customizeview()
-     {
-          return view('AdminMaster.ProductsCustomize');
-     }
+    public function customizeview()
+    {
+        return view('AdminMaster.ProductsCustomize');
+    }
 
-     public function productDataCustomize()
-     {
-          $customproduct = customize_product::orderBy('created_at', 'DESC');
+    public function productDataCustomize()
+    {
+        $customize_product = customize_product::all();
 
-          return datatables()->of($customproduct)
-               ->editColumn('referensi', function (customize_product $model) {
-                    return '<img src="https://adminphoenixjewellery.com/' . $model->referensi . ' "height="100px" ">';
-               })
-               ->addColumn('action', 'AdminMaster.template.action_customize')
-               ->addColumn('status', 'AdminMaster.template.label_customize')
-               ->addIndexColumn()
-               ->rawColumns(['referensi', 'action', 'status'])
-               ->toJson();
-     }
+        return datatables()->of($customize_product)
+            ->editColumn('referensi', function (customize_product $model) {
+                return '<img src="https://adminphoenixjewellery.com/' . $model->referensi . ' "height="100px" ">';
+            })
+           ->addColumn('action', 'AdminMaster.template.action_customize')
+           ->addColumn('status', 'AdminMaster.template.label_customize')
+           ->addIndexColumn()
+           ->rawColumns(['referensi','action','status'])
+           ->toJson();
+    }
 
      public function status_customize($id)
      {
@@ -318,15 +318,15 @@ class ProductController extends Controller
           $status_sekarang = $status_customizeproduct->status;
 
           if ($status_sekarang == 0) {
-               \DB::table('special_product')->where('id', $id)->update([
+               \DB::table('customize_product')->where('id', $id)->update([
                     'status' => 1
                ]);
           } else if ($status_sekarang == 1) {
-               \DB::table('special_product')->where('id', $id)->update([
+               \DB::table('customize_product')->where('id', $id)->update([
                     'status' => 2
                ]);
           } else {
-               \DB::table('special_product')->where('id', $id)->update([
+               \DB::table('customize_product')->where('id', $id)->update([
                     'status' => 0
                ]);
           }

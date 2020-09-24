@@ -67,7 +67,7 @@
           { data:'name' },
           { data:'email' },
           { data:'telp' },
-          { data:'photo' },
+          { data:'photo'},
           { data:'photoktp' },
           { data:'created_at' },
           { data:'updated_at' },

@@ -52,6 +52,11 @@ class AppServiceProvider extends ServiceProvider
             $AllCount          = DB::table('transaction_detail')->count();
             $view->with('transaction',$AllCount);
         });
+        
+        view()->composer(['*'], function ($view) {
+            $AllCount          = DB::table('pengiriman')->count();
+            $view->with('pengiriman',$AllCount);
+        });
         ///////////////////////////
 
         //Table Transaksi - admin pengirim
