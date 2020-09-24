@@ -153,6 +153,63 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
 
 <script type="text/javascript">
+  $(function(){
+    $('#Product_img_1').change(function(){
+      if(Math.round(this.files[0].size/(1024*1024)) > 2) {
+        alert('Please select image size less than 2 MB');
+        this.value = "";
+        } else {
+        alert('success');
+      }
+    });
+  });
+
+  $(function(){
+    $('#Product_img_2').change(function(){
+      if(Math.round(this.files[0].size/(1024*1024)) > 2) {
+        alert('Please select image size less than 2 MB');
+        this.value = "";
+        } else {
+        alert('success');
+      }
+    });
+  });
+
+  $(function(){
+    $('#Product_img_3').change(function(){
+      if(Math.round(this.files[0].size/(1024*1024)) > 2) {
+        alert('Please select image size less than 2 MB');
+        this.value = "";
+        } else {
+        alert('success');
+      }
+    });
+  });
+
+  $(function(){
+    $('#Product_img_4').change(function(){
+      if(Math.round(this.files[0].size/(1024*1024)) > 2) {
+        alert('Please select image size less than 2 MB');
+        this.value = "";
+        } else {
+        alert('success');
+      }
+    });
+  });
+
+  $(function(){
+    $('#Product_img_5').change(function(){
+      if(Math.round(this.files[0].size/(1024*1024)) > 2) {
+        alert('Please select image size less than 2 MB');
+        this.value = "";
+        } else {
+        alert('success');
+      }
+    });
+  });
+</script>
+
+<script type="text/javascript">
 if($("#productadd").length > 0) {
   $("#productadd").validate({
   rules: {

@@ -23,8 +23,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <form role="form" method="POST" action="/admin_master/VoucherAdd">
-        {{csrf_field()}}
+      <form role="form" method="POST" action="/admin_master/VoucherAdd" id="voucheradd">
+        @csrf
+        @method('POST')
         <div class="card-body">
           <div class="form-group">
               <label for="productID_view">ID Voucher</label>
@@ -40,14 +41,11 @@
           </div>
           <div class="form-group">
             <label>Voucher with Percent</label>
-            <div class="input-group-append">
-              <input type="text" class="form-control" id="value" name="value">
-              <span class="input-group-text">%</span>
-            </div>
+              <input type="text" class="form-control" id="value" name="value" placeholder="%">
           </div>
           <div class="form-group">
               <label>Voucher Max in User</label>
-              <input type="text" class="form-control" id="voucherMax_user" name="voucherMax_user">
+              <input type="number" class="form-control" id="voucherMax_user" name="voucherMax_user">
           </div>
         </div>
     </div>
@@ -58,5 +56,52 @@
   </form>
  </div>
 </div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
+
+<script type="text/javascript">
+  if($("#voucheradd").length > 0) {
+    $("#voucheradd").validate({
+    rules: {
+      voucherID_view: {
+        required: true,
+        minlength:3,
+        maxlength: 10,
+      },
+      voucherCode: {
+        required: true,
+        maxlength:50,
+      },
+      type: {
+        required: true,
+      },
+      value: {
+        required: true,
+      },
+    },
+
+    messages: {
+      voucherID_view: {
+        required: "<span class='text-danger'>Please enter id voucher</span>",
+        minlength: "<span class='text-danger'>The code should be 3 characters</span> ",
+        maxlength: "<span class='text-danger'>Your code maxlength should be 15 characters long.</span>",
+      },
+      voucherCode: {
+        required: "<span class='text-danger'>Please enter code voucher.</span>",
+        maxlength: "<span class='text-danger'>The name should less than or equal to 20 characters.</span>",
+      },
+      type: {
+        required: "<span class='text-danger'>Please enter type voucher (ex: Discount)</span>",
+      },
+      value: {
+        required: "<span class='text-danger'>Please enter value (ex:-10%)</span> ",
+      },
+    },
+    })
+  }
+</script>
 
 @endsection

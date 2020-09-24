@@ -33,19 +33,21 @@ class PenjualanController extends Controller
 
     public function status_order($id)
     {
-        $status_order = \DB::table('transaction_detail')->where('id', $id)->first();
+        $status_order = \DB::table('transaction_detail')->where('TransactionID', $id)->first();
+        
         $status_sekarang = $status_order->status;
-
-        if ($status_sekarang == 0) {
-            \DB::table('transaction_detail')->where('id', $id)->update([
-                'status' => 1
+        
+        if ($status_sekarang == 'pending') {
+            \DB::table('transaction_detail')->where('TransactionID', $id)->update([
+                'status' => 'shipping'
             ]);
         }
-        else {
-            \DB::table('transaction_detail')->where('id', $id)->update([
-                'status' => 3
+        else if($status_sekarang == 'shipping'){
+            \DB::table('transaction_detail')->where('TransactionID', $id)->update([
+                'status' => 'success'
             ]);
         }
+       
         return redirect()->route('adminmaster.penjualan.show')->with(['success' => 'status has been changed!']);
     }
 

@@ -1,13 +1,13 @@
 @if ($model->status == 'pending')
 <label class="badge badge-warning">
-    Unpaid
+    pending
 </label>
-@elseif($model->status == 'success')
+@elseif($model->status == 'shipping')
 <label class="badge badge-success">
-   Paid
+   shipping
 </label>
 @else
 <label class="badge badge-danger">
-    Cancel
+    Paid
 </label>
 @endif

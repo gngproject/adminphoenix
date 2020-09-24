@@ -126,6 +126,6 @@ Route::get('/Pengiriman/{TransactionID}/view', 'PengirimanController@inputnumber
 
 Route::post('/Pengiriman/update','PengirimanController@ShippingOrder')->name('pengiriman.update');
 
-Route::get('/Pengiriman/status/{status}', 'PengirimanController@statuspengiriman')->name('pengiriman.status');
+Route::get('/Pengiriman/status/{TransactionID}', 'PengirimanController@statuspengiriman')->name('pengiriman.status');
 
 Route::get('/Pengiriman/detail/{TransactionID}', 'PengirimanController@pengirimandetail')->name('pengiriman.detail');

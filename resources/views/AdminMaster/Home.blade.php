@@ -65,7 +65,7 @@
         <div class="small-box bg-secondary">
           <div class="inner">
             <h3 class="text-center">{{ $pengiriman }}</h3>
-            <p class="text-center">All Pengiriman</p>
+            <p class="text-center">All Shipment</p>
           </div>
           <div class="icon">
             <i class="ion-ios-box"></i>
