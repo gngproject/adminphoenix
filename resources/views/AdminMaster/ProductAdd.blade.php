@@ -24,23 +24,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <form action="{{ route('adminmaster.product.add') }}" method="POST" enctype="multipart/form-data">
+      <form id="productadd" action="{{ route('adminmaster.product.add') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <div class="card-body">
           <div class="form-group">
             <label for="productID_view">Product ID</label>
             <input type="text" class="form-control" id="productID_view" name="productID_view">
-            @if ($errors->has('productID_view'))
               <span class="text-danger">{{ $errors->first('productID_view') }}</span>
-            @endif
           </div>
           <div class="form-group">
             <label for="Product_Name">Product Name</label>
             <input type="text" class="form-control" id="Product_Name" name="Product_Name">
-            @if ($errors->has('Product_Name'))
               <span class="text-danger">{{ $errors->first('Product_Name') }}</span>
-            @endif
           </div>
           <div class="form-group">
             <label>Gender</label>
@@ -55,23 +51,17 @@
           <div class="form-group">
             <label for="Price">Price</label>
             <input type="text" class="form-control" id="Price" name="Price">
-            @if ($errors->has('description'))
               <span class="text-danger">{{ $errors->first('Price') }}</span>
-            @endif
           </div>
           <div class="form-group">
             <label for="stock">Stock</label>
             <input type="text" class="form-control" id="stock" name="stock">
-            @if ($errors->has('stock'))
               <span class="text-danger">{{ $errors->first('stock') }}</span>
-            @endif
           </div>
           <div class="form-group">
             <label for="Weight">Weight</label>
             <input type="text" class="form-control" id="weight" name="weight">
-            @if ($errors->has('weight'))
               <span class="text-danger">{{ $errors->first('weight') }}</span>
-            @endif
           </div>
           <div class="form-group">
             <label>Product Type</label>
@@ -88,37 +78,35 @@
           <div class="form-group">
             <label>Emas Yang Dipasang</label>
               <textarea class="form-control" id="emas_karat" name="emas_karat" rows="2" placeholder="Cincin berlian dengan 18 karat..."></textarea>
-            @if ($errors->has('emas_karat'))
               <span class="text-danger">{{ $errors->first('emas_karat') }}</span>
-            @endif
           </div>
           <div class="row">
             <div class="col">
-              <label for="berlian">Berlian Yang Dipasang (Carats)</label>
+              <label for="berlian">Berlian Yang Dipasang</label>
               <input type="number" class="form-control" id="berlian_karat1" name="berlian_karat1" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
-              <input type="number" class="form-control" id="berlian_karat2" name="berlian_karat2" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
-              <input type="number" class="form-control" id="berlian_karat3" name="berlian_karat3" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
-              <input type="number" class="form-control" id="berlian_karat4" name="berlian_karat4" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
-
-              @if ($errors->has('berlian_karat1'))
                 <span class="text-danger">{{ $errors->first('berlian_karat1') }}</span>
-              @endif
+              <input type="number" class="form-control" id="berlian_karat2" name="berlian_karat2" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
+                <span class="text-danger">{{ $errors->first('berlian_karat2') }}</span>
+              <input type="number" class="form-control" id="berlian_karat3" name="berlian_karat3" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
+                <span class="text-danger">{{ $errors->first('berlian_karat3') }}</span>
+              <input type="number" class="form-control" id="berlian_karat4" name="berlian_karat4" placeholder="0.0001" step="0.0001" min="0" max="10"> <br>
+                <span class="text-danger">{{ $errors->first('berlian_karat4') }}</span>
             </div>
             <div class="col">
               <label for="berlian">Quantity Berlian</label>
-              <input type="number" class="form-control" id="quantity_berlian1" name="quantity_berlian1" placeholder="0" step="1" min="0" required> <br>
-              <input type="number" class="form-control" id="quantity_berlian2" name="quantity_berlian2" placeholder="0" step="1" min="0"> <br>
-              <input type="number" class="form-control" id="quantity_berlian3" name="quantity_berlian3" placeholder="0" step="1" min="0"> <br>
-              <input type="number" class="form-control" id="quantity_berlian4" name="quantity_berlian4" placeholder="0" step="1" min="0"> <br>
-
-              @if ($errors->has('quantity_berlian1'))
+              <input type="number" class="form-control" id="quantity_berlian1" name="quantity_berlian1" placeholder="0" step="1" min="0"> <br>
                 <span class="text-danger">{{ $errors->first('quantity_berlian1') }}</span>
-              @endif
+              <input type="number" class="form-control" id="quantity_berlian2" name="quantity_berlian2" placeholder="0" step="1" min="0"> <br>
+                <span class="text-danger">{{ $errors->first('quantity_berlian2') }}</span>
+              <input type="number" class="form-control" id="quantity_berlian3" name="quantity_berlian3" placeholder="0" step="1" min="0"> <br>
+                <span class="text-danger">{{ $errors->first('quantity_berlian3') }}</span>
+              <input type="number" class="form-control" id="quantity_berlian4" name="quantity_berlian4" placeholder="0" step="1" min="0"> <br>
+                <span class="text-danger">{{ $errors->first('quantity_berlian4') }}</span>
             </div>
           </div>
           <div class="form-group">
             <label>Colour & Clarity</label>
-            <select class="form-control" id="typeID" name="typeID">
+            <select class="form-control" id="colour" name="colour">
               <option></option>
               <option value="1">F & VVS</option>
             </select>
@@ -126,37 +114,27 @@
           <div class="form-group">
             <label for="Product_img_1">Product Image 1</label>
               <input type="file" class="form-control" id="Product_img_1" name="Product_img_1">
-              @if ($errors->has('Product_img_1'))
                 <span class="text-danger">{{ $errors->first('Product_img_1') }}</span>
-              @endif
           </div>
           <div class="form-group">
             <label for="Product_img_2">Product Image 2</label>
               <input type="file" class="form-control" id="Product_img_2" name="Product_img_2">
-              @if ($errors->has('Product_img_2'))
                 <span class="text-danger">{{ $errors->first('Product_img_2') }}</span>
-              @endif
           </div>
           <div class="form-group">
             <label for="Product_img_3">Product Image 3</label>
               <input type="file" class="form-control" id="Product_img_3" name="Product_img_3">
-              @if ($errors->has('Product_img_3'))
                 <span class="text-danger">{{ $errors->first('Product_img_3') }}</span>
-              @endif
           </div>
           <div class="form-group">
             <label for="Product_img_4">Product Image 4</label>
               <input type="file" class="form-control" id="Product_img_4" name="Product_img_4">
-              @if ($errors->has('Product_img_4'))
                 <span class="text-danger">{{ $errors->first('Product_img_4') }}</span>
-              @endif
           </div>
           <div class="form-group">
             <label for="Product_img_5">Product Image 5</label>
-              <input type="file" class="form-control" id="Product_img_5" name="Product_img_5">
-              @if ($errors->has('Product_img_5'))
+              <input type="file" class="form-control" id="Product_img_5" name="Product_img_5" accept=".png, .jpg, .jpeg">
                 <span class="text-danger">{{ $errors->first('Product_img_5') }}</span>
-              @endif
           </div>
           <div class="col-md-12">
             <button type="submit" value="submit" onclick="return confirm('Are you sure this data product ?')"
@@ -169,4 +147,68 @@
 </div>
 
 @include('sweetalert::alert')
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.min.js"></script>
+
+<script type="text/javascript">
+if($("#productadd").length > 0) {
+  $("#productadd").validate({
+  rules: {
+    productID_view: {
+      required: true,
+      minlength:3,
+      maxlength: 10,
+    },
+    Product_Name: {
+      required: true,
+      maxlength:50,
+    },
+    Price: {
+      required: true,
+      digits:true,
+      minlength:6,
+      maxlength:12,
+    },
+    stock: {
+      required: true,
+      digits:true,
+      minlength:1,
+    },
+    weight: {
+      required: true,
+      minlength:1,
+    },
+  },
+
+  messages: {
+    productID_view: {
+      required: "<span class='text-danger'>Please enter code product</span>",
+      minlength: "<span class='text-danger'>The code should be 3 characters</span> ",
+      maxlength: "<span class='text-danger'>Your code maxlength should be 10 characters long.</span>",
+    },
+    Product_Name: {
+      required: "<span class='text-danger'>Please enter product name.</span>",
+      maxlength: "<span class='text-danger'>The name should less than or equal to 50 characters.</span>",
+    },
+    Price: {
+      required: "<span class='text-danger'>Please enter price</span>",
+      minlength: "<span class='text-danger'>price should be 10 digits</span> ",
+      digits: "<span class='text-danger'>Please enter only numbers</span>",
+      maxlength: "<span class='text-danger'>price should be 12 digits</span> ",
+    },
+    stock: {
+      required: "<span class='text-danger'>Please enter stock</span> ",
+      digits: "<span class='text-danger'>Please enter only numbers</span>",
+      minlength: "<span class='text-danger'>stock should be 1</span> ",
+    },
+    weight: {
+      required: "<span class='text-danger'>Please enter weight</span> ",
+      minlength: "<span class='text-danger'>weight should be 1 digits</span> ",
+    },
+  },
+  })
+}
+</script>
 @endsection
