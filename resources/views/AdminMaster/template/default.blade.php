@@ -111,23 +111,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin_master/ProductShow" class="nav-link">
-              <i class="nav-icon fa fa-book"></i>
-              <p>
-                PRODUCT
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/admin_master/CustomizeProduct" class="nav-link">
-              <i class="nav-icon fas fa-pencil-ruler"></i>
-              <p>
-                CUSTOMIZE PRODUCT
-              </p>
-            </a>
-          </li>
-          {{-- @else --}}
-          <li class="nav-item">
             <a href="/admin_master/UserShow" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>
@@ -135,6 +118,39 @@
               </p>
             </a>
           </li>
+          <li class="nav-item dropdown d-sm-block ">
+            <a  class="nav-link accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
+              
+              <span class="sidebar-icon"><i class="nav-icon fa fa-book"></i></span>
+                <span class="sidebar-title">PRODUCTS<i class="fa fa-angle-down" style="text-align: right"></i></span>
+                <b class="caret"></b>
+              {{-- <i class="nav-icon fa fa-book"></i>
+              <p>
+                PRODUCT
+              </p>
+              --}}
+            </a>
+              {{-- <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
+                <span class="sidebar-icon"><i class="fa fa-users"></i></span>
+                <span class="sidebar-title">Management</span>
+                <b class="caret"></b>
+            </a> --}}
+            <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu" style="list-style-type: none;">
+                <li style="padding: 1rem 0 1rem 0;"><a href="/admin_master/ProductShow"><i class="fas fa-ring"></i>
+                  ALL PRODUCT</a></li>
+                <li style="padding: 0 0 1rem 0;"><a href="/admin_master/CustomizeProduct"><i class="nav-icon fas fa-pencil-ruler"></i>CUSTOMIZE PRODUCT</a></li>
+            </ul>
+          </li>
+          {{-- <li class="nav-item">
+            <a href="/admin_master/CustomizeProduct" class="nav-link">
+              <i class="nav-icon fas fa-pencil-ruler"></i>
+              <p>
+                CUSTOMIZE PRODUCT
+              </p>
+            </a>
+          </li> --}}
+          {{-- @else --}}
+          
           <li class="nav-item">
             <a href="/admin_master/VoucherShow" class="nav-link">
               <i class="nav-icon fa fa-percent"></i>
