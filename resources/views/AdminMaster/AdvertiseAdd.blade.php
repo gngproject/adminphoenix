@@ -29,11 +29,18 @@
       <div class="card-body">
         <div class="form-group">
             <label for="advertiseID_view">Advertise ID</label>
-            <input type="text" class="form-control" id="advertiseID_view" name="advertiseID_view">
-        </div>
+        <input type="text" class="form-control @error('advertiseID_view') is-invalid @enderror" id="advertiseID_view" name="advertiseID_view" value="{{old('advertiseID_view')}}">
+              @error('advertiseID_view')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
         <div class="form-group">
             <label for="advertise_name">Advertise Title</label>
-            <input type="text" class="form-control" id="advertise_name" name="advertise_name" >
+            <input type="text" class="form-control @error('advertise_name') is-invalid @enderror" id="advertise_name" name="advertise_name" >
+            @error('advertise_name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+  
         </div>
         <div class="form-group">
             <label>Description</label>

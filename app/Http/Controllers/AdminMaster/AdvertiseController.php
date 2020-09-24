@@ -74,9 +74,14 @@ class AdvertiseController extends Controller
 
      public function store(Request $request)
      {
-        if ($request->hasFile('advertise_img')) {
-           $advertise_img = $request->file('advertise_img')->store('public/advertisment');
-        }
+          $this->validate($request, [
+               'advertiseID_view' => 'required',
+               'advertise_name' => 'required',
+               'advertise_img' => 'required|image',
+          ]);
+          if ($request->hasFile('advertise_img')) {
+               $advertise_img = $request->file('advertise_img')->store('public/advertisment');
+          }
 
         $advertise =  advertisment::create([
            'advertiseID_view'         => $request->advertiseID_view,
