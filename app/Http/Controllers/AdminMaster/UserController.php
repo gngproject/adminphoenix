@@ -33,10 +33,18 @@ class UserController extends Controller
 
           return datatables()->of($users)
           ->editColumn('photo', function(User $model) {
-               return '<img src="http://adminphoenixjewellery.com/'. $model->photo .' "height="100px" ">';
+              if($model->photo){
+                  return '<img src="http://adminphoenixjewellery.com/'. $model->photo .' "height="100px" ">';
+              } else {
+                  return '<img src="https://adminphoenixjewellery.com/Assets/img/default.jpg" img style="width:120px; height:160px">';
+              }
           })
           ->editColumn('photoktp', function(User $model) {
-               return '<img src="http://adminphoenixjewellery.com/'. $model->photoktp .' "height="100px" ">';
+              if($model->photoktp){
+                  return '<img src="http://adminphoenixjewellery.com/'. $model->photoktp .' "height="100px" ">';
+              } else {
+                  return '<img src="https://adminphoenixjewellery.com/Assets/img/default.jpg" img style="width:120px; height:160px">';
+              }
           })
           // ->addColumn('action', 'AdminMaster.template.action')
           // ->addColumn('status', 'AdminMaster.template.label')

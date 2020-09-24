@@ -22,11 +22,9 @@
                             <table id="dataTables" class="table table-bordered table-striped text-center">
                                 <thead>
                                     <tr>
-                                    <th>ID Payment</th>
-                                    <th>Pelanggan</th>
-                                    <th>Telp</th>
-                                    <th>Alamat</th>
-                                    <th>Subtotal</th>
+                                    <th>Order ID</th>
+                                    <th>Code</th>
+                                    <th>Truck Number</th>
                                     <th>Tanggal</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -67,10 +65,8 @@
                         ajax: '{{ route('adminmaster.pengiriman.data') }}',
                         columns: [
                             { data:'TransactionID' },
-                            { data:'nama' },
-                            { data:'phone' },
-                            { data:'alamat' },
-                            { data:'amount' },
+                            { data:'shipmentcode' },
+                            { data:'no_resi' },
                             { data:'created_at' },
                             { data:'status' },
                             { data:'action' },

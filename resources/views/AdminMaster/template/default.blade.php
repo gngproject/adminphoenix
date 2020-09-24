@@ -179,7 +179,7 @@
             <a href="/admin_master/Pengiriman" class="nav-link">
               <i class="nav-icon fa fa-truck"></i>
               <p>
-                PENGIRIMAN
+                SHIPMENT
               </p>
             </a>
           </li>
@@ -246,7 +246,7 @@
 
 @stack('scriptsadminmaster')
 
-@stack('')
+@stack('scriptsadminmastercustomize')
 
 @stack('scriptsadminusers')
 

@@ -33,13 +33,11 @@ Route::post('/product/updatedata/{productID}', 'ProductController@update')->name
 
 
 // Product Customize
-
 Route::get('/CustomizeProduct', 'ProductController@customizeview')->name('productmaster.customize');
 
 Route::get('/CustomizeProduct/data', 'ProductController@productDataCustomize')->name('productmaster.customizedata');
 
 Route::get('/CustomizeProduct/status/{status}', 'ProductController@status_customize')->name('customizeproduct.status');
-
 
 
 //---------- Users Controller Admin Master ----------//
@@ -111,13 +109,11 @@ Route::get('/Sell/show', 'PenjualanController@index')->name('penjualan.show');
 
 Route::get('/Sell/data', 'PenjualanController@PenjualanDataMaster')->name('penjualan.data');
 
+Route::get('/Sell/status/{status}', 'PenjualanController@status_order')->name('order.status');
+
 Route::get('/Sell/{id}/detail', 'PenjualanController@detail')->name('penjualan.detail');
 
-Route::get('/Selltrash', 'PenjualanController@trash')->name('penjualan.trash');
-
-Route::get('/Delete/sell/{id}', 'PenjualanController@TransDeleteSoft')->name('penjualan.soft');
-
-Route::get('/restore/sell/{id}', 'PenjualanController@RestoreSell')->name('penjualan.restore');
+Route::get('/Sell/ProccedShipment', 'PenjualanController@procced_shipmet')->name('penjualan.shipment');
 
 
 
@@ -126,6 +122,10 @@ Route::get('/Pengiriman', 'PengirimanController@index')->name('pengiriman.show')
 
 Route::get('/Pengiriman/data', 'PengirimanController@pengiriman_data')->name('pengiriman.data');
 
-Route::get('/Pengiriman/{transactionID}/view', 'PengirimanController@pengiriman_detail')->name('pengirim.detail');
+Route::get('/Pengiriman/{TransactionID}/view', 'PengirimanController@inputnumbershipping')->name('pengirim.resi');
 
-Route::post('/Pengiriman/update', 'PengirimanController@ShippingOrder')->name('pengiriman.update');
+Route::post('/Pengiriman/update','PengirimanController@ShippingOrder')->name('pengiriman.update');
+
+Route::get('/Pengiriman/status/{status}', 'PengirimanController@statuspengiriman')->name('pengiriman.status');
+
+Route::get('/Pengiriman/detail/{TransactionID}', 'PengirimanController@pengirimandetail')->name('pengiriman.detail');
