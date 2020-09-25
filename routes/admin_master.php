@@ -80,9 +80,7 @@ Route::get('/AdvertShow', 'AdvertiseController@index')->name('advertise.show');
 Route::get('/Advertisment/data', 'AdvertiseController@AdvertMaster')->name('advertise.showdata');
 
 // Route::post('/AdvertiseAdd', 'AdvertiseController@AdvertiseAdd')->name('Advertise_add');
-Route::get('/AdvertiseAddView', function () {
-    return view("AdminMaster.AdvertiseAdd");
-})->name('advertise.form');
+Route::get('/AdvertiseAddView', 'AdvertiseController@FormAddAdvertise')->name('advertise.form');
 
 Route::get('/AdvertiseShowNonActive', 'AdvertiseController@ShowNonActive')->name('advertise.shownonactive');
 

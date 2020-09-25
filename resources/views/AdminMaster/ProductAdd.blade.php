@@ -30,7 +30,7 @@
         <div class="card-body">
           <div class="form-group">
             <label for="productID_view">Product ID</label>
-            <input type="text" class="form-control" id="productID_view" name="productID_view">
+            <input type="text" class="form-control" id="productID_view" name="productID_view" value="{{ $productID_view }}" readonly>
               <span class="text-danger">{{ $errors->first('productID_view') }}</span>
           </div>
           <div class="form-group">

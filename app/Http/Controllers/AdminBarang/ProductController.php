@@ -86,7 +86,7 @@ class ProductController extends Controller
           return view('AdminBarang.EditProduct', [
                'product' => $product,
           ]);
-          // dd($product);
+         
      }
 
      public function update_photo_product($files_Photo, $db_path, $folder)

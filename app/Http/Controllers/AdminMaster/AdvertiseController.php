@@ -72,6 +72,14 @@ class AdvertiseController extends Controller
                ->toJson();
      }
 
+     public function FormAddAdvertise()
+     {
+         $data =\DB::table('advertise')->orderby('advertiseid', 'DESC')->first();
+         $advertiseID_view = $data->advertiseID_view;
+         $advertiseID_view++;
+         return view('AdminMaster.AdvertiseAdd',['advertiseID_view' => $advertiseID_view]);
+     }
+
      public function store(Request $request)
      {
           $this->validate($request, [

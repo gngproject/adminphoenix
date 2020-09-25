@@ -29,7 +29,7 @@
       <div class="card-body">
         <div class="form-group">
             <label for="advertiseID_view">Advertise ID</label>
-        <input type="text" class="form-control @error('advertiseID_view') is-invalid @enderror" id="advertiseID_view" name="advertiseID_view" value="{{old('advertiseID_view')}}">
+        <input type="text" class="form-control @error('advertiseID_view') is-invalid @enderror" id="advertiseID_view" name="advertiseID_view" value="{{ $advertiseID_view }}" readonly>
               @error('advertiseID_view')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror

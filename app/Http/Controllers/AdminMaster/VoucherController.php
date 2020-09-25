@@ -80,6 +80,7 @@ class VoucherController extends Controller
 
     public function VoucherAddView()
     {
+        
         return view('AdminMaster.VoucherAdd');
     }
 

@@ -53,13 +53,15 @@ class ProductController extends Controller
 
      public function FormAddView()
      {
-          return view('AdminMaster.ProductAdd');
+         $data =\DB::table('product')->orderby('productid', 'DESC')->first();
+         $productID_view =$data->productID_view;
+         $productID_view++;
+          return view('AdminMaster.ProductAdd',['productID_view'=> $productID_view]);
      }
 
      public function store(Request $request)
      {
 
-          // dd($request);
           $productID_view       = $request->input("productID_view");
           $Product_type         = $request->input("Product_type");
           $Product_Name         = $request->input("Product_Name");
@@ -210,8 +212,6 @@ class ProductController extends Controller
           $Product_table->quantity_berlian3 =  $quantity_berlian3;
           $Product_table->quantity_berlian4 =  $quantity_berlian4;
 
-          // $Product_table->Gender = $Gender;
-
           if (!empty($Product_img_1)) {
                $Product_table->Product_img_1 =
                     strval(
@@ -266,7 +266,6 @@ class ProductController extends Controller
                          )
                     );
           }
-          // dd($idProduct);
           $Product_table->save();
 
           return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'status has been changed!']);
