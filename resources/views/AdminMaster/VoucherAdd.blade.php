@@ -29,7 +29,7 @@
         <div class="card-body">
           <div class="form-group">
               <label for="productID_view">ID Voucher</label>
-              <input type="text" class="form-control" id="voucherID_view" name="voucherID_view" required>
+              <input type="text" class="form-control" id="voucherID_view" name="voucherID_view" placeholder="9.9" required>
           </div>
           <div class="form-group">
               <label for="Price">Code Voucher</label>

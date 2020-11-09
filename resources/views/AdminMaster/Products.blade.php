@@ -22,30 +22,33 @@
   <div class="col-12">
     <div class="card mt-2">
       <div class="card-header">
-        <h3 class="card-title">Data Product</h3>
+        <div class="row">
+            <h3 class="card-title col-md-10 col-sm-12 my-2 ">Data Product</h3>
+            <div class="col-md-2 col-sm-12 ml-auto">
+                <button type="button" onclick="location.href='{{ route('adminmaster.productmaster.add') }}'" class="btn btn-sm btn-block btn-primary">Tambah Product</button>
+            </div>
+         </div>
+       
       </div>
       <div class="card-body">
-        <table id="dataTables" class="table table-bordered table-striped text-center">
-          <div class="row mb-2">
-            <div class="col-2">
-              <button type="button" onclick="location.href='{{ route('adminmaster.productmaster.add') }}'" class="btn btn-sm btn-block btn-primary">Tambah Product</button>
-            </div>
-          </div>
-          <thead>
-          <tr>
-            <th>ID Product</th>
-            <th>Name</th>
-            <th>Stocks</th>
-            <th>Weight (gram)</th>
-            <th>Berlian Yang Dipasang (Carats)</th>
-            <th>Image 1</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-          </thead>
-        </table>
+        <div class="table-responsive">
+            <table id="dataTables" class="table table-bordered table-striped text-center no-margin">
+              <thead>
+                  <tr>
+                    <th>ID Product</th>
+                    <th>Name</th>
+                    <th>Stocks</th>
+                    <th>Weight (gram)</th>
+                    <th>Berlian Yang Dipasang (Carats)</th>
+                    <th>Image 1</th>
+                    <th>Created</th>
+                    <th>Updated</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+              </thead>
+            </table>
+        </div>
       </div>
     </div>
   </div>

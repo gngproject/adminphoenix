@@ -19,28 +19,30 @@
                             </h4>
                         </div>
                         <div class="card-body">
-                            <table id="dataTables" class="table table-bordered table-striped text-center">
-                                <thead>
-                                    <tr>
-                                    <th>Order ID</th>
-                                    <th>Code</th>
-                                    <th>Truck Number</th>
-                                    <th>Tanggal</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <div class="panel-body">
-                                    <label for="filter-status"> Filter Berdasarkan Status Pengiriman :</label>
-                                    <select data-column="1" class="form-control col-sm-4 filter-status" placeholder="Filter Berdasarkan Status Pengiriman :">
-                                        <option value=""> --Pilih Status-- </option>
-                                        <option value="1"> New </option>
-                                        <option value="3"> Shipping </option>
-                                        <option value="4"> Done </option>
-                                    </select>
-                                    <br>
-                                </div>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="dataTables" class="table table-bordered table-striped text-center">
+                                    <thead>
+                                        <tr>
+                                        <th>Order ID</th>
+                                        <th>Code</th>
+                                        <th>Truck Number</th>
+                                        <th>Tanggal</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <div class="panel-body">
+                                        <label for="filter-status"> Filter Berdasarkan Status Pengiriman :</label>
+                                        <select data-column="1" class="form-control col-sm-4 filter-status" placeholder="Filter Berdasarkan Status Pengiriman :">
+                                            <option value=""> --Pilih Status-- </option>
+                                            <option value="1"> New </option>
+                                            <option value="3"> Shipping </option>
+                                            <option value="4"> Done </option>
+                                        </select>
+                                        <br>
+                                    </div>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

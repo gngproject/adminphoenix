@@ -46,8 +46,6 @@ class UserController extends Controller
                   return '<img src="https://adminphoenixjewellery.com/Assets/img/default.jpg" img style="width:120px; height:160px">';
               }
           })
-          // ->addColumn('action', 'AdminMaster.template.action')
-          // ->addColumn('status', 'AdminMaster.template.label')
           ->addIndexColumn()
           ->rawColumns(['photo','photoktp'])
           ->toJson();
@@ -58,7 +56,6 @@ class UserController extends Controller
          $request    = $this->_client->request('GET','userall');
          $response   = $request->getBody()->getContents();
          $result     = json_decode($response);//jadi data array
-         // dd($response);
          return view('AdminMaster.Home',['TotalUserRegis'=> $result]);
     }
 }

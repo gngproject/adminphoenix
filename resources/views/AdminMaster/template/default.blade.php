@@ -16,67 +16,65 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
   <title>@yield('title')</title>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Right navbar links -->
+    <ul class="navbar-nav">
+     
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+     
+    </ul>
     <ul class="navbar-nav ml-auto">
-      <?php
+         <?php
         $transactionnotif = \DB::select(" SELECT * from transaction_detail ");
       ?>
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">{{count($transactionnotif)}}</span>
-        </a>
-        {{-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">Notifications Transaction</span>
-          <div class="dropdown-divider"></div>
-          @foreach($transactionnotif as $notif)
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-sign-in-alt mr-2"></i>{{$notif->ID_payment}} - {{$notif->status}}
-          </a>
-          @endforeach
-          <div class="dropdown-divider"></div>
-        </div> --}}
-      </li>
+        <li class="nav-item dropdown ml-auto">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="far fa-bell"></i>
+              <span class="badge badge-warning navbar-badge">{{count($transactionnotif)}}</span>
+            </a>
+           
+        </li>
       <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="fa fa-user-circle mr-3"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <div class="media-body">
-                <p class="text-sm text-muted">
-                  <i class="fa fa-pencil-square-o mr-1"> </i>PROFILE -
-                  {{ auth()->user()->name }}
-                </p>
-              </div>
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="fa fa-user-circle mr-3"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <div class="media-body">
+                    <p class="text-sm text-muted">
+                      <i class="fa fa-pencil-square-o mr-1"> </i>PROFILE -
+                      {{ auth()->user()->name }}
+                    </p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+                <!-- Message Start -->
+                <div class="media">
+                  <div class="media-body">
+                    <p class="text-sm text-muted">
+                      <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        <i class="fa fa-outdent mr-1"></i> LOGOUT </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </p>
+                  </div>
+                </div>
+                <!-- Message End -->
             </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-            <!-- Message Start -->
-            <div class="media">
-              <div class="media-body">
-                <p class="text-sm text-muted">
-                  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    <i class="fa fa-outdent mr-1"></i> LOGOUT </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </p>
-              </div>
-            </div>
-            <!-- Message End -->
-        </div>
-      </li>
+          </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -100,7 +98,6 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          {{-- @if(Auth::admin()->role == 'adminB') --}}
           <li class="nav-header">MENU</li>
           <li class="nav-item">
             <a href="/admin_master" class="nav-link">
@@ -118,38 +115,20 @@
               </p>
             </a>
           </li>
-          <li class="nav-item dropdown d-sm-block ">
+          <li class="nav-item dropdown">
             <a  class="nav-link accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
               
-              <span class="sidebar-icon"><i class="nav-icon fa fa-book"></i></span>
-                <span class="sidebar-title">PRODUCTS<i class="fa fa-angle-down" style="text-align: right"></i></span>
-                <b class="caret"></b>
-              {{-- <i class="nav-icon fa fa-book"></i>
-              <p>
-                PRODUCT
-              </p>
-              --}}
+                <span class="sidebar-icon"><i class="nav-icon fa fa-book"></i></span>
+                <p>PRODUCTS<i class="fa fa-angle-down ml-2" style="text-align: right"></i></p>
+               
             </a>
-              {{-- <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" href="#submenu-2">
-                <span class="sidebar-icon"><i class="fa fa-users"></i></span>
-                <span class="sidebar-title">Management</span>
-                <b class="caret"></b>
-            </a> --}}
+             
             <ul id="submenu-2" class="panel-collapse collapse panel-switch" role="menu" style="list-style-type: none;">
                 <li style="padding: 1rem 0 1rem 0;"><a href="/admin_master/ProductShow"><i class="fas fa-ring"></i>
                   ALL PRODUCT</a></li>
                 <li style="padding: 0 0 1rem 0;"><a href="/admin_master/CustomizeProduct"><i class="nav-icon fas fa-pencil-ruler"></i>CUSTOMIZE PRODUCT</a></li>
             </ul>
           </li>
-          {{-- <li class="nav-item">
-            <a href="/admin_master/CustomizeProduct" class="nav-link">
-              <i class="nav-icon fas fa-pencil-ruler"></i>
-              <p>
-                CUSTOMIZE PRODUCT
-              </p>
-            </a>
-          </li> --}}
-          {{-- @else --}}
           
           <li class="nav-item">
             <a href="/admin_master/VoucherShow" class="nav-link">
@@ -169,7 +148,7 @@
           </li>
           <li class="nav-item">
             <a href="/admin_master/Sell/show" class="nav-link">
-              <i class="nav-icon fa fa-file"></i>
+              <i class="nav-icon fas fa-exchange-alt"></i>
               <p>
                 TRANSACTION
               </p>
@@ -228,7 +207,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script src="/AdminStyle/js/jquery.min.js"></script>
 <script src="/AdminStyle/js/jquery.min.js"></script>
 <script src="/AdminStyle/js/bootstrap.bundle.min.js"></script>
 <script src="/AdminStyle/js/adminlte.min.js"></script>

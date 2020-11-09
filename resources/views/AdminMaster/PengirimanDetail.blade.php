@@ -9,17 +9,17 @@
 			<div class="card card-default">
                 
 				<div class="card-header card-header-border-bottom">
-					<h2>Detail Shipment <u>#{{ $result->shipmentcode }}</u></h2>
+					<h2>Detail Shipment <u># {{ $result->shipmentcode }} </u></h2>
 				</div>
 				<div class="card-body">
 					<div class="row">
 						<div class="col-xl-6 col-lg-6">
 							<p class="text-dark mb-2" style="font-weight: normal; font-size:16px; text-transform: uppercase;">Billing Address</p>
 							<address>
-								<br>{{ $result->nama }}
+								<br>{{ $result->name }}
 								<br>{{ $result->alamat }}
 								<br> Email: {{ $result->email }}
-								<br> Phone: {{ $result->phone }}
+								<br> Phone: {{ $result->telp }}
 							</address>
 						</div>
 						<div class="col-xl-6 col-lg-6">
@@ -47,7 +47,7 @@
 								<td>{{ $result->productID_view }}</td>
 								<td>{{ $result->Product_Name }}</td>
 								<td>{{ $result->quantity }}</td>
-								<td>@currency($result->amount)</td>
+								<td>@currency($result->grand_total)</td>
 							</tr>
 						</tbody>
 					</table>
@@ -55,7 +55,7 @@
 						<div class="col-md-3">
 							<ul class="list-unstyled mt-4">
 								<li class="mid pb-3 text-dark">Subtotal
-									<span class="d-inline-block float-right text-default">@currency($result->amount)</span>
+									<span class="d-inline-block float-right text-default">@currency($result->grand_total)</span>
 								</li>
 								<li class="mid pb-3 text-dark">Tax(10%)
 									<span class="d-inline-block float-right text-default"></span>
@@ -64,7 +64,7 @@
 									<span class="d-inline-block float-right text-default">Rp.0</span>
 								</li>
 								<li class="pb-3 text-dark">Total
-									<span class="d-inline-block float-right">@currency($result->amount)</span>
+									<span class="d-inline-block float-right">@currency($result->grand_total)</span>
 								</li>
 							</ul>
 						</div>

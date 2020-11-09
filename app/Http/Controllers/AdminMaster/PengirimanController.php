@@ -28,7 +28,6 @@ class PengirimanController extends Controller
         ->addColumn('status', 'AdminMaster.template.label_pengirim')
         ->addIndexColumn()
         ->rawColumns(['action','status'])
-        // ->rawColumns(['status'])
         ->toJson();
     }
 
@@ -59,7 +58,7 @@ class PengirimanController extends Controller
         {
             return response()->json(['message' => 'error'],500);
             } else {
-            return redirect(route('adminmaster.pengiriman.show'))->with(['success' => 'Truck Number has been successfully !']);
+            return redirect(route('adminmaster.pengiriman.show'))->with(['success' => 'Truck Number has been successfully Added !']);
         }
 
     }
@@ -92,15 +91,17 @@ class PengirimanController extends Controller
         return redirect()->route('adminmaster.pengiriman.show')->with(['success' => 'status has been changed!']);
     }
 
-    public function pengirimandetail($TransactionID)
+    public function pengirimandetail($id)
     {
         $result = \DB::table('pengiriman')
-                  ->join('product','pengiriman.productID','=',"product.productID")
-                  ->join('users','pengiriman.userID','=',"users.id")
-                  ->join('transaction_detail','pengiriman.TransactionID','=',"pengiriman.TransactionID")
-                  ->select('pengiriman.*', 'product.*', 'users.*', 'transaction_detail.*')
-                  ->where('pengiriman.TransactionID','=',$TransactionID)->first();
-       return view('AdminMaster.PengirimanDetail')->with(compact('result'));
+                  ->join('orders','orders.code','=','pengiriman.TransactionID')
+                  ->join('users','users.id','=','pengiriman.userID')
+                  ->join('product','product.productID','=','pengiriman.productID')
+                  ->select('pengiriman.*', 'orders.*', 'users.*', 'product.*')
+                  ->where('pengiriman.id','=',$id)
+                  ->get();
+        
+       return view('AdminMaster.ViewPengiriman')->with(['result' => $result]);
     }
 
 

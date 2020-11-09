@@ -268,7 +268,7 @@ class ProductController extends Controller
           }
           $Product_table->save();
 
-          return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'status has been changed!']);
+          return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'Your Product Data Has Been Edited']);
      }
 
      public function status($id_product)

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PenjualanController extends Controller
 {
-
+    
     public function index()
     {
         return view('AdminMaster.Sell');
@@ -22,33 +22,41 @@ class PenjualanController extends Controller
 
     public function PenjualanDataMaster()
     {
-        $Penjualans = DB::table('transaction_detail')->get();
+        $Penjualans = DB::table('orders')
+                      ->join('product','product.productID', '=', 'orders.ProductID')
+                      ->select('orders.*','product.*')->get();
+        
         return datatables()->of($Penjualans)
             ->addColumn('status', 'AdminMaster.template.label_order')
-            ->addColumn('action', 'AdminMaster.template.action_transaction')
+            ->addColumn('action', 'AdminMaster.template.action_order')
             ->addIndexColumn()
-            ->rawColumns(['status','action'])
+            ->rawColumns(['status', 'action'])
             ->toJson();
     }
-
+    
     public function status_order($id)
     {
-        $status_order = \DB::table('transaction_detail')->where('TransactionID', $id)->first();
         
-        $status_sekarang = $status_order->status;
-        
+        $data_order = \DB::table('orders')->where('code', $id)->first();
+        $status_sekarang = $data_order->payment_status;
+        $dt = date('Y-m-d H:i:s');;
         if ($status_sekarang == 'pending') {
-            \DB::table('transaction_detail')->where('TransactionID', $id)->update([
-                'status' => 'shipping'
+            \DB::table('orders')->where('code', $id)->update([
+                'payment_status' => 'paid'
             ]);
         }
-        else if($status_sekarang == 'shipping'){
-            \DB::table('transaction_detail')->where('TransactionID', $id)->update([
-                'status' => 'success'
+        
+             \DB::table('pengiriman')->insert([
+            'TransactionID'     => $data_order->code,
+            'userID'            => $data_order->user_id,
+            'productID'         => $data_order->ProductID,
+            'shipmentcode'      => 'Shipment-' . uniqid(),
+            'status_kirim'      => 3,
+            'created_at'        => $dt
             ]);
-        }
+        
        
-        return redirect()->route('adminmaster.penjualan.show')->with(['success' => 'status has been changed!']);
+        return redirect()->route('adminmaster.penjualan.show')->with(['success' => 'The Transaction Has Done and Sent to Shipment']);
     }
 
 }

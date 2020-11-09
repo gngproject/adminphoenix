@@ -107,7 +107,7 @@ Route::get('/Sell/show', 'PenjualanController@index')->name('penjualan.show');
 
 Route::get('/Sell/data', 'PenjualanController@PenjualanDataMaster')->name('penjualan.data');
 
-Route::get('/Sell/status/{status}', 'PenjualanController@status_order')->name('order.status');
+Route::get('/Sell/status/{code}', 'PenjualanController@status_order')->name('order.status');
 
 Route::get('/Sell/{id}/detail', 'PenjualanController@detail')->name('penjualan.detail');
 
@@ -126,4 +126,4 @@ Route::post('/Pengiriman/update','PengirimanController@ShippingOrder')->name('pe
 
 Route::get('/Pengiriman/status/{TransactionID}', 'PengirimanController@statuspengiriman')->name('pengiriman.status');
 
-Route::get('/Pengiriman/detail/{TransactionID}', 'PengirimanController@pengirimandetail')->name('pengiriman.detail');
+Route::get('/Pengiriman/detail/{id}', 'PengirimanController@pengirimandetail')->name('pengiriman.detail');

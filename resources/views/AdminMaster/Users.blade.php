@@ -25,20 +25,23 @@
         <h3 class="card-title">Data Users Registrasi</h3>
       </div>
       <div class="card-body">
-        <table id="dataTables" class="table table-bordered table-striped text-center">
-          <thead>
-          <tr>
-            <th>ID User</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Telp</th>
-            <th>Photo </th>
-            <th>Photo KTP</th>
-            <th>Created</th>
-            <th>Updated</th>
-          </tr>
-          </thead>
-        </table>
+        <div class="table-responsive">
+            <table id="dataTables" class="table table-bordered table-striped text-center">
+                <thead>
+                  <tr>
+                    <th>ID User</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Telp</th>
+                    <th>Photo </th>
+                    <th>Photo KTP</th>
+                    <th>Created</th>
+                    <th>Updated</th>
+                  </tr>
+                </thead>
+            </table>
+        </div>
+        
       </div>
     </div>
   </div>

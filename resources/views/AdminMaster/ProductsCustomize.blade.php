@@ -7,7 +7,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Product Special Report</h1>
+        <h1>Customize Product</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -53,6 +53,18 @@
       $('#dataTables').DataTable({
         processing: true,
         serverSide: true,
+        dom: '<"html5buttons">Blfrtip',
+        language: {
+                buttons: {
+                    colvis : 'show / hide', // label button show/hide
+                    colvisRestore: "Reset Kolom" //label untuk reset kolom ke default
+                  }
+        },
+        buttons : [
+                    {extend: 'colvis', postfixButtons: [ 'colvisRestore' ] },
+                    {extend: 'excel', title: 'User Datatables'},
+                    {extend: 'print', title: 'User Datatables'},
+        ],
         ajax: '{{ route('adminmaster.productmaster.customizedata') }}',
         columns: [
           { data:"id" },

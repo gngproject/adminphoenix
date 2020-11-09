@@ -17,18 +17,11 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class AdvertiseController extends Controller
 {
-     private $__client;
+     
 
      public function __construct()
      {
-          $this->_client = new Client([
-               'base_uri' => 'http://localhost:8000/api/',
-               'headers'  => [
-                    'API_KEY'      => '6c1f8962d43c0a2496ef99c365de68a8',
-                    'Content-Type' => 'application/x-www-form-urlencoded',
-                    'Accept'       => 'application/json'
-               ]
-          ]);
+          
      }
 
      public function index()
@@ -88,7 +81,7 @@ class AdvertiseController extends Controller
                'advertise_img' => 'required|image',
           ]);
           if ($request->hasFile('advertise_img')) {
-               $advertise_img = $request->file('advertise_img')->store('public/advertisment');
+               $advertise_img = $request->file('advertise_img')->store('public/promotion');
           }
 
         $advertise =  advertisment::create([
@@ -99,38 +92,11 @@ class AdvertiseController extends Controller
            'status'                   => 0,
         ]);
 
-        return redirect()->route('adminmaster.advertise.shownonactive')->with(['success' => "Advertise has success!"]);
-        // dd($test);
+        return redirect()->route('adminmaster.advertise.shownonactive')->with(['success' => "New Advertise has Successfully Added!"]);
+        
      }
 
-     // public function AdsDeleteSoft($id_ads)
-     // {
-     //      $request      = $this->_client->request('DELETE', "advertise/delete/{$id_ads}");
-     //      $response     = json_decode($request->getBody()->getContents());
-     //      return redirect("/admin_master/AdvertShow")->with(['success' => 'Delete Has Been Success !']);
-     //      // dd($response);
-     // }
-
-     // public function RestoreAdvertise($id_ads)
-     // {
-     //      $request    = $this->_client->request('GET', "restore/advertise/{$id_ads}");
-     //      $response   = $request->getBody()->getContents();
-     //      $responses  = json_decode($response); //jadi data array
-     //      // var_dump($responses);
-     //      return redirect("/admin_master/Advertisetrash")->with(['success' => 'restore Has Been Success !']);
-     // }
-
-     // public function EdtAdvertise($id_ads)
-     // {
-     //      $data = \DB::table('advertise')->where('advertiseID', $id_ads)->first();
-     //      // $response      = $this->_client->request('GET', "advertisment/{$id_ads}");
-     //      // $result        = json_decode($response->getBody()->getContents());
-     //      // $data          = ['response' => $result];
-     //      return View::make('AdminMaster.EAdvertise', compact('data'));
-     //      // return view("AdminMaster.EAdvertise", $data);
-     //      // var_dump($data);
-     // }
-
+   
      public function update_photo_advertise($advertise_img, $db_path, $folder)
      {
         if ($db_path != null) {
@@ -142,7 +108,17 @@ class AdvertiseController extends Controller
         return $New_path;
     }
 
+    public function EdtAdvertise($advertiseID){
+        $result=advertisment::all()
+        ->where('advertiseID','=', $advertiseID)
+        ->first();
 
+        if(empty($result)){
+            return response()->json(['message' => 'Advertise Not Found'],204);
+        } else {
+            return view("AdminMaster.EAdvertise", ['data' => $result]);
+        }
+    }
     public function AdvertiseUpdate(Request $request, $id_ads)
     {
       $getData = advertisment::all()->where('advertiseID', '=', $id_ads)->first();
@@ -151,27 +127,17 @@ class AdvertiseController extends Controller
       $advertise_description         = $request->input("advertise_description");
       $advertise_img                 = $request->file('advertise_img');
 
-      $path_advertise = $this->update_photo_advertise($advertise_img , $getData->advertise_img , 'advertiseimg');
+       if ($request->hasFile('advertise_img')) {
+               $advertise_img = $request->file('advertise_img')->store('public/promotion');
+          }
       $advertise = advertisment::find($id_ads);
       $advertise->advertiseID_view = $advertiseID_view;
       $advertise->advertise_name = $advertise_name;
       $advertise->advertise_description = $advertise_description;
-      $advertise->advertise_img = $path_advertise;
+      $advertise->advertise_img = $advertise_img;
 
       $advertise->save();
-      return redirect()->route('adminmaster.advertise.shownonactive')->with(['success' => 'Your Product Add Has Been Success!']);
-
-
-      // $response = $this->_client->request("POST", '/advertise/update/{$id_ads}', [
-
-      //      'json' => [
-      //           'advertiseID'                => $request->get("advertiseID"),
-      //           'advertiseID_view'           => $request->get("advertiseID_view"),
-      //           'advertise_name'             => $request->get("advertise_name"),
-      //           'advertise_description'      => $request->get("advertise_description"),
-      //      ]
-
-      // ]);
+      return redirect()->route('adminmaster.advertise.shownonactive')->with(['success' => 'Advertisement Has Been Successfully Edited!']);
 
 
     }

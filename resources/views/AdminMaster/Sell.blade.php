@@ -24,9 +24,6 @@
     <nav class="navbar navbar-expand navbar-light">
       <div class="card-header p-1">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
-          </li>
           <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('adminmaster.penjualan.show') }}" class="nav-link active">Transaction</a>
           </li>
@@ -40,20 +37,21 @@
             <h3 class="card-title">Master Data Transaction</h3>
           </div>
           <div class="card-body">
-            <table id="dataTables" class="table table-bordered table-striped text-center">
-              <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Payment Status</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Action</th>
-              </tr>
-              </thead>
-            </table>
+            <div class="table-responsive">
+                <table id="dataTables" class="table table-bordered table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Payment Status</th>
+                            <th>Transaction Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
           </div>
         </div>
       </div>
@@ -79,13 +77,12 @@
         ],
         ajax: '{{ route('adminmaster.penjualan.data') }}',
         columns: [
-          { data:'TransactionID' },
-          { data:'nama' },
+          { data:'code' },
+          { data:'Product_Name' },
           { data:'quantity' },
-          { data:'amount', render: $.fn.dataTable.render.number( ',', '.', 0, 'Rp' ) },
+          { data:'grand_total', render: $.fn.dataTable.render.number( ',', '.', 0, 'Rp' ) },
           { data:'status' },
-          { data:'created_at' },
-          { data:'updated_at' },
+          { data:'order_date' },
           { data:'action' },
         ],
       });

@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
           <label for="advertise_img">Advertise Image</label>
-          <input type="file" class="form-control" id="advertise_img" name="advertise_img">
+          <input type="file" class="form-control" id="advertise_img" name="advertise_img"  value="{{$data->advertise_img}}">
            
         </div>
         {{-- <div class="form-group">

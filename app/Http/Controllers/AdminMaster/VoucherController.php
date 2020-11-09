@@ -14,19 +14,7 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class VoucherController extends Controller
 {
-    private $__client;
-
-     public function __construct() {
-          $this->_client = new Client([
-               'base_uri' => 'http://localhost:8000/api/',
-               'headers'  => [
-                              'API_KEY'      =>'6c1f8962d43c0a2496ef99c365de68a8',
-                              'Content-Type' =>'application/x-www-form-urlencoded',
-                              'Accept'       =>'application/json'
-                              ]
-          ]);
-     }
-
+   
     public function index()
     {
         return view("AdminMaster.Vouchers");
@@ -68,20 +56,11 @@ class VoucherController extends Controller
         // dd($response);
     }
 
-    // public function ShowTrash() {
-    //     $request    = voucher::where('status','=',0)->get();
-    //     return view('AdminMaster.VoucherTrash',['Trashers'=> $request]);
-    //     // $request  = $this->_client->request('GET','voucher/trash');
-    //     // $response = $request->getBody()->getContents();
-    //     // $responses = json_decode($response);//jadi data array
-    //     // return view('AdminMaster.VoucherTrash',['Trashers'=> $responses]);
-    //     // dd($response);
-    // }
-
     public function VoucherAddView()
     {
+         
+         return view('AdminMaster.VoucherAdd');
         
-        return view('AdminMaster.VoucherAdd');
     }
 
     public function VoucherAdd(Request $req)
@@ -102,32 +81,29 @@ class VoucherController extends Controller
         $res=$vouch_table->save();
 
         if($res==1){
-            return redirect()->route('adminmaster.productmaster.show')->with(['success' => 'Your Voucher Has Been Success !']);
+            return redirect()->route('adminmaster.voucher.shownonactive')->with(['success' => 'New Voucher Has Been Successfully Added !']);
         }
         else{
             return Response()->json(['message' => 'something wrong'],500);
         }
 
-        // dd($response);
     }
 
-    public function RestoreVoucher($voucherid)
-    {
-        $request    = $this->_client->request('GET',"restore/voucher/{$voucherid}");
-        $response   = $request->getBody()->getContents();
-        $responses  = json_decode($response);//jadi data array
-        // var_dump($responses);
-        return redirect("/admin_master/VoucherShow")->with(['success' => 'restore Has Been Success !']);
-    }
+    // public function RestoreVoucher($voucherid)
+    // {
+    //     $request    = $this->_client->request('GET',"restore/voucher/{$voucherid}");
+    //     $response   = $request->getBody()->getContents();
+    //     $responses  = json_decode($response);//jadi data array
+    //     return redirect("/admin_master/VoucherShow")->with(['success' => 'restore Has Been Success !']);
+    // }
 
-    public function DeletePermanent($voucherid)
-    {
-        $request  = $this->_client->request('GET',"voucher/deletepermanent/{$voucherid}");
-        $response = $request->getBody()->getContents();
-        $responses = json_decode($response);//jadi data array
-        // dd($responses);
-        return redirect("/admin_master/VoucherTrash")->with(['success' => 'Delete Permanent Has Been Success !']);
-    }
+    // public function DeletePermanent($voucherid)
+    // {
+    //     $request  = $this->_client->request('GET',"voucher/deletepermanent/{$voucherid}");
+    //     $response = $request->getBody()->getContents();
+    //     $responses = json_decode($response);//jadi data array
+    //     return redirect("/admin_master/VoucherTrash")->with(['success' => 'Delete Permanent Has Been Success !']);
+    // }
 
     public function EditVoucher($voucherid)
     {

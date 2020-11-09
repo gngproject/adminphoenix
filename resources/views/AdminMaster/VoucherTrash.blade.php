@@ -24,14 +24,11 @@
     <nav class="navbar navbar-expand navbar-light">
       <div class="card-header p-1">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ route('adminmaster.voucher.show') }}" class="nav-link">Active Voucher</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('adminmaster.voucher.show') }}" class="nav-link">Voucher</a>
-          </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('adminmaster.voucher.shownonactive') }}" class="nav-link active">Non Active</a>
+            <a href="{{ route('adminmaster.voucher.shownonactive') }}" class="nav-link active">Non-Active Voucher</a>
           </li>
         </ul>
       </div>
@@ -41,24 +38,32 @@
       <div class="col-12">
         <div class="card mt-2">
           <div class="card-header">
-            <h3 class="card-title">Data Non Active Voucher</h3>
+             <div class="row">
+                <h3 class="card-title col-md-10 col-sm-12 my-2 ">Non-Active Data Voucher</h3>
+                <div class="col-md-2 col-sm-12 ml-auto">
+                  <button type="button" onclick="location.href='{{ route('adminmaster.voucher.add') }}'" class="btn btn-sm btn-block btn-primary"><i class="fas fa-plus m-2"></i>Tambah Voucher</button>
+                </div>
+              </div>
           </div>
           <div class="card-body">
-            <table id="dataTables" class="table table-bordered table-striped text-center">
-              <thead>
-              <tr>
-                <th>ID Voucher</th>
-                <th>Code Voucher</th>
-                <th>Tipe Voucher</th>
-                <th>Value Voucher</th>
-                <th>Voucher Max User</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>status</th>
-                <th>Action</th>
-              </tr>
-              </thead>
-            </table>
+            <div class="table-responsive">
+                <table id="dataTables" class="table table-bordered table-striped text-center no-margin">
+                  <thead>
+                      <tr>
+                        <th>ID Voucher</th>
+                        <th>Code Voucher</th>
+                        <th>Tipe Voucher</th>
+                        <th>Value Voucher</th>
+                        <th>Voucher Max User</th>
+                        <th>Created</th>
+                        <th>Updated</th>
+                        <th>status</th>
+                        <th>Action</th>
+                      </tr>
+                  </thead>
+                </table>
+            </div>
+                
           </div>
         </div>
       </div>

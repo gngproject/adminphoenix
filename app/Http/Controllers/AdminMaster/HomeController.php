@@ -12,14 +12,7 @@ class HomeController extends Controller
     private $__client;
 
      public function __construct() {
-          $this->_client = new Client([
-               'base_uri' => 'http://localhost:8000/api/',
-               'headers'  => [
-                              'API_KEY'      =>'6c1f8962d43c0a2496ef99c365de68a8',
-                              'Content-Type' =>'application/x-www-form-urlencoded',
-                              'Accept'       =>'application/json'
-                              ]
-          ]);
+       
     }
 
     public function index(){

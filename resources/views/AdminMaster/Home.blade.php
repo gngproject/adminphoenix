@@ -7,7 +7,7 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-6 col-6">
+      <div class="col-lg-6 col-md-6 col-sm-12">
       <!-- small box -->
         <div class="small-box bg-info">
           <div class="inner">
@@ -21,7 +21,7 @@
         </div>
       </div>
       <!-- ./col -->
-      <div class="col-lg-6 col-6">
+      <div class="col-lg-6 col-md-6 col-sm-12">
         <!-- small box -->
         <div class="small-box bg-warning">
           <div class="inner">
@@ -35,7 +35,7 @@
         </div>
       </div>
       <!-- ./col -->
-      <div class="col-lg-6 col-6">
+      <div class="col-lg-6 col-md-6 col-sm-12">
       <!-- small box -->
         <div class="small-box bg-danger">
           <div class="inner">
@@ -48,7 +48,7 @@
           <a href="/admin_master/Sell/show" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <div class="col-lg-6 col-6">
+      <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="small-box bg-success">
           <div class="inner">
             <h3 class="text-center">@currency ($total)</h3>
@@ -60,7 +60,7 @@
           {{-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
         </div>
       </div>
-      <div class="col-lg-6 col-6">
+      <div class="col-lg-6 col-md-6 col-sm-12">
         <!-- small box -->
         <div class="small-box bg-secondary">
           <div class="inner">
